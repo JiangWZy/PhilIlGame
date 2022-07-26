@@ -64,6 +64,10 @@
     var player;
     var carrots = [];
     var totalCarrots = 12;
+    var line;
+
+    var pX;
+    var pY;
 
     //Keyboard controls
     var cursors;
@@ -94,6 +98,7 @@
     function create()
     {
 
+      this.add.image(400, 400, 'sky');
 //this block of code adds the bunny and makes it so when you click it, it turns red
       sprite = this.add.sprite(400,300, 'player').setInteractive();
       this.physics.add.existing(sprite);
@@ -112,6 +117,27 @@
 
        //end bunny red
 
+       //lasso where cursor is
+
+      /*if(pointer.isDown)
+       {
+        const x = pointer.x;
+        const y = pointer.y;
+        console.log("this is running");
+        line = this.add.line(0, 0, 0, 0, parseInt(pointer.x, 10), parseInt(pointer.y, 10), 0xffffff, 100);
+      } */
+
+    /*  this.input.on('pointerdown', (pointer) => {
+
+          const x = pointer.x;
+          const y = pointer.y;
+          console.log("this is running");
+          line = this.add.line(0, 0, 0, 0, parseInt(pX, 10), parseInt(pY, 10), 0xffffff, 100);
+
+        });  */
+        var graphics = this.add.graphics();
+
+
        //allows bunny to be draggable only once
        let dragCount = 1;
        if(dragCount > 0)
@@ -121,6 +147,11 @@
          this.input.on('drag', function (pointer, gameObject, dragX, dragY){
            gameObject.x = dragX;
            gameObject.y = dragY;
+           //pX = gameObject.x;
+          // pY = gameObject.y;
+          graphics.lineStyle(1, 0x00ff00, 1);
+
+          graphics.lineBetween(100, 100, dragX, dragY);
          });
 
          dragCount--;
@@ -160,7 +191,7 @@
        //player coords
       // var x = player.x;
       // var y = player.y;
-       //var r1 = this.add.line(x, y, x, y, 140, 90, 0xffffff);
+       //var r1 = this.add.line(200, 200, 0, 0, 140, 90, 0xffffff);
 
     }
 
