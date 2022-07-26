@@ -72,6 +72,10 @@
     var guiTimer;
     var sprite;
 
+    //player coords
+    var x = player.x;
+    var y = player.y;
+
     //grant - loads EVERYTHING (background, assets, etc.)
     function preload()
     {
@@ -104,11 +108,6 @@
 
        //end bunny red
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 10cb336d81c5538d624046110d7e7005892d9d98
        //allows bunny to be draggable only once
        let dragCount = 1;
        if(dragCount > 0)
@@ -123,8 +122,8 @@
          dragCount--;
          this.input.on('drag', function (pointer, gameObject) {
 
-         gameObject.clearTint();
-         gameObject.disableInteractive();
+           gameObject.clearTint();
+           gameObject.disableInteractive();
 
          });
        }
@@ -159,6 +158,8 @@
        space.on('down', jump); //calls jump function when space is pressed
 
        gui = this.add.text(16, 16, '', {fontSize: '32px', fill: '#000'});
+       var r1 = this.add.line(x, y, x, y, 140, 90, 0xffffff);
+
     }
 
     function createPlatforms(scene)
@@ -181,6 +182,7 @@
 
     function update()
     {
+
         if(totalCarrots > 0){
         //Player will not move in the x-axis unless a movement key is being pressed
           player.setVelocityX(0);
