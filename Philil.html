@@ -74,18 +74,21 @@
     var guiTimer;
     var sprite;
 
-    //player coords
-    var x = player.x;
-    var y = player.y;
+
 
     //grant - loads EVERYTHING (background, assets, etc.)
     function preload()
     {
-        this.load.image('sky', 'assets/clouds.png');
-        this.load.image('platform', 'assets/platform.png');
-        this.load.image('player', 'assets/wabbit.png');
-        this.load.image('carrot', 'assets/carrot.png');
-
+      this.load.image('sky', 'assets/clouds.png');
+      this.load.image('platform', 'assets/platform.png');
+      this.load.image('player', 'assets/wabbit.png');
+      this.load.image('carrot', 'assets/carrot.png');
+      this.load.image('doublejump', 'assets/mutations/doubleJumpMutationIcon.png');
+      this.load.image('laser', 'assets/mutations/laserMutationIcon.png');
+      this.load.image('energy', 'assets/mutations/Energy.png');
+      this.load.image('shield', 'assets/mutations/shieldMutationIcon.png');
+      this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
+      this.load.image('lassoString', 'assets/lasso/lassoString.png');
     }
 
     function create()
@@ -160,7 +163,10 @@
        space.on('down', jump); //calls jump function when space is pressed
 
        gui = this.add.text(16, 16, '', {fontSize: '32px', fill: '#000'});
-       var r1 = this.add.line(x, y, x, y, 140, 90, 0xffffff);
+       //player coords
+      // var x = player.x;
+      // var y = player.y;
+       //var r1 = this.add.line(x, y, x, y, 140, 90, 0xffffff);
 
     }
 
