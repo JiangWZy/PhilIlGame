@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -11,7 +12,8 @@
 <body>
 
     <script>
-
+    //comment here
+    //Who is Joe!??????
     var config = {
         type: Phaser.AUTO,
         width: 1200,
@@ -60,6 +62,7 @@
     //Game Objects
     var platforms;
     var player;
+    var carrots = [];
     var totalCarrots = 12;
 
     //Keyboard controls
@@ -71,19 +74,18 @@
     var guiTimer;
     var sprite;
 
+    //player coords
+    var x = player.x;
+    var y = player.y;
+
     //grant - loads EVERYTHING (background, assets, etc.)
     function preload()
     {
-      this.load.image('sky', 'assets/clouds.png');
-      this.load.image('platform', 'assets/platform.png');
-      this.load.image('player', 'assets/wabbit.png');
-      this.load.image('carrot', 'assets/carrot.png');
-      this.load.image('doublejump', 'assets/mutations/doubleJumpMutationIcon.png');
-      this.load.image('laser', 'assets/mutations/laserMutationIcon.png');
-      this.load.image('energy', 'assets/mutations/Energy.png');
-      this.load.image('shield', 'assets/mutations/shieldMutationIcon.png');
-      this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
-      this.load.image('lassoString', 'assets/lasso/lassoString.png');
+        this.load.image('sky', 'assets/clouds.png');
+        this.load.image('platform', 'assets/platform.png');
+        this.load.image('player', 'assets/wabbit.png');
+        this.load.image('carrot', 'assets/carrot.png');
+
     }
 
     function create()
@@ -104,11 +106,16 @@
        sprite.on('pointerup', function (pointer) {
          this.clearTint();
        });
+<<<<<<< HEAD
        //allows bunny to be draggable only once
+=======
+
+
+>>>>>>> b1b3b19e9fe8490201e0f756dccb49fc211f351b
        //end bunny red
 
        //allows bunny to be draggable only once
-       let dragCont = 1;
+       let dragCount = 1;
        if(dragCount > 0)
        {
          this.input.setDraggable(sprite);
@@ -121,8 +128,8 @@
          dragCount--;
          this.input.on('drag', function (pointer, gameObject) {
 
-         gameObject.clearTint();
-         gameObject.disableInteractive();
+           gameObject.clearTint();
+           gameObject.disableInteractive();
 
          });
        }
@@ -152,6 +159,8 @@
        space.on('down', jump); //calls jump function when space is pressed
 
        gui = this.add.text(16, 16, '', {fontSize: '32px', fill: '#000'});
+       var r1 = this.add.line(x, y, x, y, 140, 90, 0xffffff);
+
     }
 
     function createPlatforms(scene)
@@ -174,6 +183,7 @@
 
     function update()
     {
+
         if(totalCarrots > 0){
         //Player will not move in the x-axis unless a movement key is being pressed
           player.setVelocityX(0);
