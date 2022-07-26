@@ -12,8 +12,6 @@
 <body>
 
     <script>
-    //comment here
-    //Who is Joe!??????
     var config = {
         type: Phaser.AUTO,
         width: 1200,
@@ -94,7 +92,7 @@
     function create()
     {
 
-//this block of code adds the bunny and makes it so when you click it, it turns red
+      //this block of code adds the bunny and makes it so when you click it, it turns red
       sprite = this.add.sprite(400,300, 'player').setInteractive();
       this.physics.add.existing(sprite);
       //makes bunny unable to be moved
@@ -109,7 +107,6 @@
        sprite.on('pointerup', function (pointer) {
          this.clearTint();
        });
-
        //end bunny red
 
        //allows bunny to be draggable only once
@@ -138,7 +135,6 @@
        player = new Player(this, 400, 400);
        this.physics.add.collider(player, platforms,);
        this.physics.add.collider(player, sprite);
-
 
        //Create the carrot interactables
        for (var i = 0; i < totalCarrots; i++)
@@ -175,9 +171,6 @@
 
         platforms.create(250, 350, 'platform'); //creates the upper left platform
         platforms.create(950, 500, 'platform'); //creates the bottome right platform
-
-
-
 
 
     }
@@ -231,7 +224,7 @@
         guiTimer = this.time.delayedCall(1000, removeText, [], this);
         totalCarrots--;
         if(totalCarrots === 0){
-          gui.setText("Congratulations! You caused a famine!");
+          gui.setText("You win!");
           guiTimer = this.time.delayedCall([], this);
         }
     }
