@@ -101,12 +101,6 @@
 
     function create()
     {
-      //creates the animations UGHHHHHHHHHHHHHHHHHHHHHHHHHHHHH >:(
-      this.anims.create({key: 'player', frames: this.anims.generateFrameNames('FirewallMinionWalking', {prefix: 'player', end: 5, zeroPad: 4}), repeat: -1});
-
-      let playerAnimations = {};
-      var left = this.anims.create({key: 'slime_left', frames: this.anims.generateFrameNames('slime', {prefix: 'player', end: 5, zeroPad: 2}), repeat: -1, frameRate: 10});
-      playerAnimations['left'] = left;
 
       //adds sky
       this.add.image(400, 400, 'sky');
