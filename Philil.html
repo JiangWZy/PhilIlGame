@@ -151,9 +151,7 @@
 
 
        //allows bunny to be draggable only once
-       let dragCount = 1;
-       if(dragCount > 0)
-       {
+
          this.input.setDraggable(sprite);
 
         this.input.on('drag', function (pointer, gameObject, dragX, dragY){
@@ -161,21 +159,21 @@
            gameObject.y = dragY;
            //pX = gameObject.x;
           // pY = gameObject.y;
-          graphics.lineStyle(1, 0x000000, 1);
+          graphics.lineStyle(10, 0x000000, 1);
 
         //  graphics.destroy();
         //  graphics.setVisible(false);
 
          });
 
-         dragCount--;
+
          this.input.on('drag', function (pointer, gameObject) {
 
            gameObject.clearTint();
-           gameObject.disableInteractive();
+        //   gameObject.disableInteractive();
           // graphics.destroy();
          });
-       }
+
        //end draggable
        /*
         this.time.addEvent({
@@ -256,7 +254,7 @@
         if(game.input.mousePointer.isDown)
         {
           graphics.clear();
-          graphics.lineStyle(1, 0x000000, 1);
+          graphics.lineStyle(5, 0x000000, 1);
           graphics.lineBetween(player.x, player.y, sprite.x, sprite.y);
 
         }
@@ -295,13 +293,13 @@
     {
         if (player.body.touching.down) {
           //If the player is on the ground, the player can jump
-          player.setVelocityY(-1100);
+          player.setVelocityY(-750);
           player.currentJumps++;
-        } else if (player.currentJumps < player.totalJumps) {
+        } //else if (player.currentJumps < player.totalJumps) {
           //If the player is not on the ground but has an available air jump, use that jump
-          player.setVelocityY(-800);
-          player.currentJumps++;
-        }
+          //player.setVelocityY(-800);
+          //player.currentJumps++;
+        //}
     }
 
 
