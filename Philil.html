@@ -38,7 +38,7 @@
         constructor(scene, x, y)
         {
             super(scene, x, y, 'player');
-            this.animations; animations;
+            //this.animations; animations;
             scene.add.existing(this);
             scene.physics.add.existing(this);
             this.setScale(2);
@@ -66,6 +66,8 @@
     var player;
     var carrots = [];
     var totalCarrots = 12;
+
+    var graphics;
     var line;
 
     var pX;
@@ -94,28 +96,29 @@
       this.load.image('shield', 'assets/mutations/shieldMutationIcon.png');
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
-      this.load.atlas('player', 'assets/firewallminion/FirewallMinionWalking.png','FirewallMinionWalking.json');
+      this.load.atlas('player', 'assets/firewallminion/FirewallMinionWalking.png','assets/firewallminion/FirewallMinionWalkingJSON.json');
     }
 
     function create()
     {
       //creates the animations UGHHHHHHHHHHHHHHHHHHHHHHHHHHHHH >:(
-      this.anims.create({key: 'player', frames: this.anims.generateFrameNames('FirewallMinionWalking', {prefix: 'blueJellyfish', end: 32, zeroPad: 4}), repeat: -1});
+      this.anims.create({key: 'player', frames: this.anims.generateFrameNames('FirewallMinionWalking', {prefix: 'player', end: 5, zeroPad: 4}), repeat: -1});
+
+      let playerAnimations = {};
+      var left = this.anims.create({key: 'slime_left', frames: this.anims.generateFrameNames('slime', {prefix: 'player', end: 5, zeroPad: 2}), repeat: -1, frameRate: 10});
+      playerAnimations['left'] = left;
+
 
       this.add.image(400, 400, 'sky');
-<<<<<<< HEAD
-//this block of code adds the bunny and makes it so when you click it, it turns red
-=======
 
       //this block of code adds the bunny and makes it so when you click it, it turns red
->>>>>>> a041126e81e7f2388ac9608eb5938c6ec0e0d1a8
       sprite = this.add.sprite(400,300, 'player').setInteractive();
       this.physics.add.existing(sprite);
       //makes bunny unable to be moved
       sprite.body.immovable = true;
 
        sprite.on('pointerdown', function (pointer) {
-         this.setTint(0xff0000);
+         this.setTint(0x00ff00);
        });
        sprite.on('pointerout', function (pointer) {
          this.clearTint();
@@ -144,7 +147,7 @@
           line = this.add.line(0, 0, 0, 0, parseInt(pX, 10), parseInt(pY, 10), 0xffffff, 100);
 
         });  */
-        var graphics = this.add.graphics();
+        graphics = this.add.graphics();
 
 
        //allows bunny to be draggable only once
@@ -153,14 +156,15 @@
        {
          this.input.setDraggable(sprite);
 
-         this.input.on('drag', function (pointer, gameObject, dragX, dragY){
+        this.input.on('drag', function (pointer, gameObject, dragX, dragY){
            gameObject.x = dragX;
            gameObject.y = dragY;
            //pX = gameObject.x;
           // pY = gameObject.y;
           graphics.lineStyle(1, 0x000000, 1);
 
-          graphics.lineBetween(player.x, player.y, dragX, dragY);
+        //  graphics.destroy();
+        //  graphics.setVisible(false);
 
          });
 
@@ -169,15 +173,39 @@
 
            gameObject.clearTint();
            gameObject.disableInteractive();
-
+          // graphics.destroy();
          });
        }
        //end draggable
+       /*
+        this.time.addEvent({
+            delay: 300,
+            callback: ()=>{
+              if (game.input.mousePointer.isDown)
+              {
+                console.log("its working");
+                //graphics.setVisible(false);
+              }
+
+            },
+            loop: true
+         });
+*/
+
+
+
+
+
+
+       /*timer = game.time.create(false);
+       timer.loop(500, updateCounter, this);
+       timer.start();
+       */
 
        //Create the platforms and the player character set to collide with the platforms
        createPlatforms(this);
        player = new Player(this, 400, 400);
-       this.physics.add.collider(player, platforms,);
+       this.physics.add.collider(player, platforms);
        this.physics.add.collider(player, sprite);
 
 
@@ -225,6 +253,19 @@
 
     function update()
     {
+        if(game.input.mousePointer.isDown)
+        {
+          graphics.clear();
+          graphics.lineStyle(1, 0x000000, 1);
+          graphics.lineBetween(player.x, player.y, sprite.x, sprite.y);
+
+        }
+        if(game.input.mousePointer.isUp)
+        {
+          graphics.clear();
+        }
+
+
         if(totalCarrots > 0){
         //Player will not move in the x-axis unless a movement key is being pressed
           player.setVelocityX(0);
@@ -262,6 +303,12 @@
           player.currentJumps++;
         }
     }
+
+
+  /*  function updateCounter()
+    {
+      graphics.setVisible(false);
+    }  */
 
     //This function is called when a player overlaps with a carrot
     function eatCarrot(player, carrot)
