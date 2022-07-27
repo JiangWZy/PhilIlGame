@@ -12,8 +12,7 @@
 <body>
 
     <script>
-    //comment here
-    //Who is Joe!??????
+
     var config = {
         type: Phaser.AUTO,
         width: 1400,
@@ -33,19 +32,13 @@
     class Player extends Phaser.Physics.Arcade.Sprite
     {
         animations;
-<<<<<<< HEAD
-        constructor(scene, x, y)
-=======
-        totalJumps = 2;
-        currentJumps = 0;
         constructor(scene, x, y, spritesheet, animations)
->>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
         {
             super(scene, x, y, spritesheet);
             this.animations = animations;
             scene.add.existing(this);
             scene.physics.add.existing(this);
-            this.setScale(1);
+            this.setScale(2);
             this.setCollideWorldBounds(true);
             this.setGravityY(3000); //We will set gravity *per object* rather than for the scene!
         }
@@ -99,32 +92,23 @@
       this.load.image('shield', 'assets/mutations/shieldMutationIcon.png');
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
-<<<<<<< HEAD
-      this.load.atlas('player', 'assets/firewallminion/FirewallMinionWalking.png','assets/firewallminion/FirewallMinionWalkingJSON.json');
+      this.load.atlas('player', 'assets/philil/Philil.png','assets/philil/Philil.json');
       this.load.image('carrot', 'assets/mutations/Energy.png');
-=======
-      this.load.atlas('player', 'assets/firewallminion/FirewallMinionSpritesheet.png','assets/firewallminion/FirewallMinionSpritesheet.json');
->>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
     }
 
     function create()
     {
 
-<<<<<<< HEAD
-      //this block of code adds the bunny and makes it so when you click it, it turns green
-=======
-      //adds sky
-      this.add.image(400, 400, 'sky');
-
       //creates the animations UGHHHHHHHHHHHHHHHHHHHHHHHHHHHHH >:(
       let playerAnimations = [];
-      var left = this.anims.create({key: 'move_left', frames: this.anims.generateFrameNames('player', {prefix: 'FirewallMinionWalking', end: 3, zeroPad: 4}), repeat: -1, frameRate:4});
+      var idle = this.anims.create({key: 'move_idle', frames: this.anims.generateFrameNames('player', {prefix: 'Idle', end: 3, zeroPad: 4}), repeat: -1, frameRate: 4});
+      playerAnimations['idle'] = idle;
+      var left = this.anims.create({key: 'move_left', frames: this.anims.generateFrameNames('player', {prefix: 'RUN', end: 1, zeroPad: 4}), repeat: -1, frameRate:4});
       playerAnimations['left'] = left;
-      var right = this.anims.create({key: 'move_right', frames: this.anims.generateFrameNames('player', {prefix: 'FirewallMinionWalking', end: 3, zeroPad: 4}), repeat: -1, frameRate: 10});
+      var right = this.anims.create({key: 'move_right', frames: this.anims.generateFrameNames('player', {prefix: 'RUN', end: 1, zeroPad: 4}), repeat: -1, frameRate: 4});
       playerAnimations['right'] = right;
 
-      //this block of code adds the bunny and makes it so when you click it, it turns red
->>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
+      //this block of code adds the bunny and makes it so when you click it, it turns green
       sprite = this.add.sprite(400,300, 'player').setInteractive();
       this.physics.add.existing(sprite);
       //makes bunny unable to be moved
@@ -144,14 +128,6 @@
 
         graphics = this.add.graphics();
 
-<<<<<<< HEAD
-=======
-
-       //allows platform to be draggable only once
-       let dragCount = 1;
-       if(dragCount > 0)
-       {
->>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
          this.input.setDraggable(sprite);
 
         this.input.on('drag', function (pointer, gameObject, dragX, dragY){
@@ -175,9 +151,8 @@
 
        //Create the platforms and the player character set to collide with the platforms
        createPlatforms(this);
-
        player = new Player(this, 400, 400, 'player', playerAnimations);
-       this.physics.add.collider(player, platforms,);
+       this.physics.add.collider(player, platforms);
        this.physics.add.collider(player, sprite);
 
 
@@ -198,13 +173,6 @@
        space.on('down', jump); //calls jump function when space is pressed
 
        gui = this.add.text(16, 16, '', {fontSize: '32px', fill: '#000'});
-<<<<<<< HEAD
-=======
-       //player coords
-       //var x = player.x;
-       //var y = player.y;
-       //var r1 = this.add.line(200, 200, 0, 0, 140, 90, 0xffffff);
->>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
 
     }
 
@@ -260,14 +228,18 @@
           {
               player.setVelocityX(-400);
               player.play(player.animations['left'], true);
-              player.flipX = false
+              player.flipX = true
           }
 
-          if (cursors.right.isDown || keys.D.isDown)
+          else if (cursors.right.isDown || keys.D.isDown)
           {
               player.setVelocityX(400);
               player.play(player.animations['right'], true);
-              player.flipX = true
+              player.flipX = false
+          }
+          else
+          {
+              player.play(player.animations['idle'], true);
           }
       }
     }
