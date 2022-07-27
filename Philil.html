@@ -32,11 +32,13 @@
 
     class Player extends Phaser.Physics.Arcade.Sprite
     {
+        animations;
         totalJumps = 2;
         currentJumps = 0;
         constructor(scene, x, y)
         {
             super(scene, x, y, 'player');
+            this.animations; animations;
             scene.add.existing(this);
             scene.physics.add.existing(this);
             this.setScale(2);
@@ -85,7 +87,6 @@
     {
       this.load.image('sky', 'assets/clouds.png');
       this.load.image('platform', 'assets/platform.png');
-      this.load.image('player', 'assets/wabbit.png');
       this.load.image('carrot', 'assets/carrot.png');
       this.load.image('doublejump', 'assets/mutations/doubleJumpMutationIcon.png');
       this.load.image('laser', 'assets/mutations/laserMutationIcon.png');
@@ -93,13 +94,21 @@
       this.load.image('shield', 'assets/mutations/shieldMutationIcon.png');
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
+      this.load.atlas('player', 'assets/firewallminion/FirewallMinionWalking.png','FirewallMinionWalking.json');
     }
 
     function create()
     {
+      //creates the animations UGHHHHHHHHHHHHHHHHHHHHHHHHHHHHH >:(
+      this.anims.create({key: 'player', frames: this.anims.generateFrameNames('FirewallMinionWalking', {prefix: 'blueJellyfish', end: 32, zeroPad: 4}), repeat: -1});
 
       this.add.image(400, 400, 'sky');
+<<<<<<< HEAD
 //this block of code adds the bunny and makes it so when you click it, it turns red
+=======
+
+      //this block of code adds the bunny and makes it so when you click it, it turns red
+>>>>>>> a041126e81e7f2388ac9608eb5938c6ec0e0d1a8
       sprite = this.add.sprite(400,300, 'player').setInteractive();
       this.physics.add.existing(sprite);
       //makes bunny unable to be moved
