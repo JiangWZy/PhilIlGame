@@ -33,13 +33,13 @@
         animations;
         totalJumps = 2;
         currentJumps = 0;
-        constructor(scene, x, y)
+        constructor(scene, x, y, spritesheet, animations)
         {
-            super(scene, x, y, 'player');
-            this.animations; animations;
+            super(scene, x, y, spritesheet);
+            this.animations = animations;
             scene.add.existing(this);
             scene.physics.add.existing(this);
-            this.setScale(2);
+            this.setScale(1);
             this.setCollideWorldBounds(true);
             this.setGravityY(3000); //We will set gravity *per object* rather than for the scene!
         }
@@ -92,15 +92,21 @@
       this.load.image('shield', 'assets/mutations/shieldMutationIcon.png');
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
-      this.load.atlas('player', 'assets/firewallminion/FirewallMinionWalking.png','FirewallMinionWalking.json');
+      this.load.atlas('player', 'assets/firewallminion/FirewallMinionSpritesheet.png','assets/firewallminion/FirewallMinionSpritesheet.json');
     }
 
     function create()
     {
-      //creates the animations UGHHHHHHHHHHHHHHHHHHHHHHHHHHHHH >:(
-      this.anims.create({key: 'player', frames: this.anims.generateFrameNames('FirewallMinionWalking', {prefix: 'blueJellyfish', end: 32, zeroPad: 4}), repeat: -1});
 
+      //adds sky
       this.add.image(400, 400, 'sky');
+
+      //creates the animations UGHHHHHHHHHHHHHHHHHHHHHHHHHHHHH >:(
+      let playerAnimations = [];
+      var left = this.anims.create({key: 'move_left', frames: this.anims.generateFrameNames('player', {prefix: 'FirewallMinionWalking', end: 3, zeroPad: 4}), repeat: -1, frameRate:4});
+      playerAnimations['left'] = left;
+      var right = this.anims.create({key: 'move_right', frames: this.anims.generateFrameNames('player', {prefix: 'FirewallMinionWalking', end: 3, zeroPad: 4}), repeat: -1, frameRate: 10});
+      playerAnimations['right'] = right;
 
       //this block of code adds the bunny and makes it so when you click it, it turns red
       sprite = this.add.sprite(400,300, 'player').setInteractive();
@@ -140,7 +146,7 @@
         var graphics = this.add.graphics();
 
 
-       //allows bunny to be draggable only once
+       //allows platform to be draggable only once
        let dragCount = 1;
        if(dragCount > 0)
        {
@@ -168,7 +174,9 @@
 
        //Create the platforms and the player character set to collide with the platforms
        createPlatforms(this);
-       player = new Player(this, 400, 400);
+
+       player = new Player(this, 400, 400, 'player', playerAnimations);
+
        this.physics.add.collider(player, platforms,);
        this.physics.add.collider(player, sprite);
 
@@ -190,8 +198,8 @@
 
        gui = this.add.text(16, 16, '', {fontSize: '32px', fill: '#000'});
        //player coords
-      // var x = player.x;
-      // var y = player.y;
+       //var x = player.x;
+       //var y = player.y;
        //var r1 = this.add.line(200, 200, 0, 0, 140, 90, 0xffffff);
 
     }
@@ -230,11 +238,15 @@
           if (cursors.left.isDown || keys.A.isDown)
           {
               player.setVelocityX(-400);
+              player.play(player.animations['left'], true);
+              player.flipX = false
           }
 
           if (cursors.right.isDown || keys.D.isDown)
           {
               player.setVelocityX(400);
+              player.play(player.animations['right'], true);
+              player.flipX = true
           }
       }
     }
