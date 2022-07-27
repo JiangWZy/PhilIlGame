@@ -1,0 +1,155 @@
+{
+	"frames": {
+		"FirewallMinionShooting0000.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0001.png": {
+			"frame": {
+				"x": 51,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0002.png": {
+			"frame": {
+				"x": 1,
+				"y": 64,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0003.png": {
+			"frame": {
+				"x": 51,
+				"y": 64,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0004.png": {
+			"frame": {
+				"x": 101,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0005.png": {
+			"frame": {
+				"x": 101,
+				"y": 64,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0006.png": {
+			"frame": {
+				"x": 1,
+				"y": 127,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 150,
+			"h": 189
+		},
+		"scale": "1"
+	}
+}
