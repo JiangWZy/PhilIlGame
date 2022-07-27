@@ -1,0 +1,640 @@
+{
+  "frames": [
+    {
+      "filename": "FirewallMinionWalking0001",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 35,
+        "h": 62
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 35,
+        "h": 62
+      },
+      "sourceSize": {
+        "w": 37,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionWalking0003",
+      "frame": {
+        "x": 0,
+        "y": 62,
+        "w": 35,
+        "h": 62
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 35,
+        "h": 62
+      },
+      "sourceSize": {
+        "w": 37,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionShooting0007",
+      "frame": {
+        "x": 0,
+        "y": 124,
+        "w": 48,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 48,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 61
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionShooting0010",
+      "frame": {
+        "x": 35,
+        "y": 0,
+        "w": 48,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 2,
+        "w": 48,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 61
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionShooting0006",
+      "frame": {
+        "x": 35,
+        "y": 59,
+        "w": 47,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 47,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 61
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionShooting0008",
+      "frame": {
+        "x": 0,
+        "y": 183,
+        "w": 47,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 2,
+        "w": 47,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 61
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionShooting0009",
+      "frame": {
+        "x": 0,
+        "y": 242,
+        "w": 43,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 2,
+        "w": 43,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 61
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionShooting0005",
+      "frame": {
+        "x": 0,
+        "y": 301,
+        "w": 37,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 2,
+        "w": 37,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 61
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0011",
+      "frame": {
+        "x": 0,
+        "y": 360,
+        "w": 35,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 0,
+        "w": 35,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0012",
+      "frame": {
+        "x": 0,
+        "y": 419,
+        "w": 35,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 0,
+        "w": 35,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0013",
+      "frame": {
+        "x": 0,
+        "y": 478,
+        "w": 35,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 0,
+        "w": 35,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionShooting0004",
+      "frame": {
+        "x": 0,
+        "y": 537,
+        "w": 35,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 2,
+        "w": 35,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 61
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionWalking0000",
+      "frame": {
+        "x": 0,
+        "y": 596,
+        "w": 35,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 4,
+        "w": 35,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 38,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionWalking0002",
+      "frame": {
+        "x": 0,
+        "y": 655,
+        "w": 35,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 4,
+        "w": 35,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 37,
+        "h": 64
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0014",
+      "frame": {
+        "x": 0,
+        "y": 714,
+        "w": 33,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 0,
+        "w": 33,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Fireball0023",
+      "frame": {
+        "x": 0,
+        "y": 773,
+        "w": 48,
+        "h": 22
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 22
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Fireball0024",
+      "frame": {
+        "x": 0,
+        "y": 821,
+        "w": 48,
+        "h": 22
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 22
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0016",
+      "frame": {
+        "x": 0,
+        "y": 869,
+        "w": 37,
+        "h": 47
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 12,
+        "w": 37,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0015",
+      "frame": {
+        "x": 22,
+        "y": 773,
+        "w": 36,
+        "h": 43
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 16,
+        "w": 36,
+        "h": 43
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0019",
+      "frame": {
+        "x": 22,
+        "y": 816,
+        "w": 37,
+        "h": 24
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 35,
+        "w": 37,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0020",
+      "frame": {
+        "x": 33,
+        "y": 714,
+        "w": 37,
+        "h": 24
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 35,
+        "w": 37,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0021",
+      "frame": {
+        "x": 57,
+        "y": 714,
+        "w": 37,
+        "h": 24
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 35,
+        "w": 37,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0022",
+      "frame": {
+        "x": 81,
+        "y": 714,
+        "w": 37,
+        "h": 24
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 35,
+        "w": 37,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten00017",
+      "frame": {
+        "x": 35,
+        "y": 360,
+        "w": 33,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 24,
+        "w": 33,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 42,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FirewallMinionDyingToBeingEaten0018",
+      "frame": {
+        "x": 37,
+        "y": 301,
+        "w": 32,
+        "h": 31
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 28,
+        "w": 32,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 59
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "FirewallMinionSpritesheet.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 105,
+      "h": 916
+    },
+    "scale": 1
+  }
+}
