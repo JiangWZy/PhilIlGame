@@ -16,12 +16,12 @@
     //Who is Joe!??????
     var config = {
         type: Phaser.AUTO,
-        width: 1200,
-        height: 700,
+        width: 1400,
+        height: 1050,
         physics: {
             default: 'arcade',
         },
-
+        backgroundColor: '#047e7e',
         scene: {
             preload: preload,
             create: create,
@@ -33,9 +33,13 @@
     class Player extends Phaser.Physics.Arcade.Sprite
     {
         animations;
+<<<<<<< HEAD
+        constructor(scene, x, y)
+=======
         totalJumps = 2;
         currentJumps = 0;
         constructor(scene, x, y, spritesheet, animations)
+>>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
         {
             super(scene, x, y, spritesheet);
             this.animations = animations;
@@ -65,7 +69,8 @@
     var platforms;
     var player;
     var carrots = [];
-    var totalCarrots = 12;
+    var totalCarrots = 24;
+    var score = 0;
 
     var graphics;
     var line;
@@ -89,19 +94,25 @@
     {
       this.load.image('sky', 'assets/clouds.png');
       this.load.image('platform', 'assets/platform.png');
-      this.load.image('carrot', 'assets/carrot.png');
       this.load.image('doublejump', 'assets/mutations/doubleJumpMutationIcon.png');
       this.load.image('laser', 'assets/mutations/laserMutationIcon.png');
-      this.load.image('energy', 'assets/mutations/Energy.png');
       this.load.image('shield', 'assets/mutations/shieldMutationIcon.png');
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
+<<<<<<< HEAD
+      this.load.atlas('player', 'assets/firewallminion/FirewallMinionWalking.png','assets/firewallminion/FirewallMinionWalkingJSON.json');
+      this.load.image('carrot', 'assets/mutations/Energy.png');
+=======
       this.load.atlas('player', 'assets/firewallminion/FirewallMinionSpritesheet.png','assets/firewallminion/FirewallMinionSpritesheet.json');
+>>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
     }
 
     function create()
     {
 
+<<<<<<< HEAD
+      //this block of code adds the bunny and makes it so when you click it, it turns green
+=======
       //adds sky
       this.add.image(400, 400, 'sky');
 
@@ -113,6 +124,7 @@
       playerAnimations['right'] = right;
 
       //this block of code adds the bunny and makes it so when you click it, it turns red
+>>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
       sprite = this.add.sprite(400,300, 'player').setInteractive();
       this.physics.add.existing(sprite);
       //makes bunny unable to be moved
@@ -128,33 +140,18 @@
          this.clearTint();
        });
 
-       //end bunny red
+       //end bunny green
 
-       //lasso where cursor is
-
-      /*if(pointer.isDown)
-       {
-        const x = pointer.x;
-        const y = pointer.y;
-        console.log("this is running");
-        line = this.add.line(0, 0, 0, 0, parseInt(pointer.x, 10), parseInt(pointer.y, 10), 0xffffff, 100);
-      } */
-
-    /*  this.input.on('pointerdown', (pointer) => {
-
-          const x = pointer.x;
-          const y = pointer.y;
-          console.log("this is running");
-          line = this.add.line(0, 0, 0, 0, parseInt(pX, 10), parseInt(pY, 10), 0xffffff, 100);
-
-        });  */
         graphics = this.add.graphics();
 
+<<<<<<< HEAD
+=======
 
        //allows platform to be draggable only once
        let dragCount = 1;
        if(dragCount > 0)
        {
+>>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
          this.input.setDraggable(sprite);
 
         this.input.on('drag', function (pointer, gameObject, dragX, dragY){
@@ -162,46 +159,19 @@
            gameObject.y = dragY;
            //pX = gameObject.x;
           // pY = gameObject.y;
-          graphics.lineStyle(1, 0x000000, 1);
+          graphics.lineStyle(10, 0x000000, 1);
 
         //  graphics.destroy();
         //  graphics.setVisible(false);
 
          });
 
-         dragCount--;
+
          this.input.on('drag', function (pointer, gameObject) {
 
            gameObject.clearTint();
-           gameObject.disableInteractive();
-          // graphics.destroy();
          });
-       }
-       //end draggable
-       /*
-        this.time.addEvent({
-            delay: 300,
-            callback: ()=>{
-              if (game.input.mousePointer.isDown)
-              {
-                console.log("its working");
-                //graphics.setVisible(false);
-              }
 
-            },
-            loop: true
-         });
-*/
-
-
-
-
-
-
-       /*timer = game.time.create(false);
-       timer.loop(500, updateCounter, this);
-       timer.start();
-       */
 
        //Create the platforms and the player character set to collide with the platforms
        createPlatforms(this);
@@ -228,10 +198,13 @@
        space.on('down', jump); //calls jump function when space is pressed
 
        gui = this.add.text(16, 16, '', {fontSize: '32px', fill: '#000'});
+<<<<<<< HEAD
+=======
        //player coords
        //var x = player.x;
        //var y = player.y;
        //var r1 = this.add.line(200, 200, 0, 0, 140, 90, 0xffffff);
+>>>>>>> 977668141ec2a587cf1139cb03b3269de311e09b
 
     }
 
@@ -246,6 +219,8 @@
 
         platforms.create(250, 350, 'platform'); //creates the upper left platform
         platforms.create(950, 500, 'platform'); //creates the bottome right platform
+        platforms.create(400, 100, 'platform'); //third platform baybee
+        platforms.create(1000, 200, 'platform'); //anotha won
 
 
 
@@ -258,7 +233,7 @@
         if(game.input.mousePointer.isDown)
         {
           graphics.clear();
-          graphics.lineStyle(1, 0x000000, 1);
+          graphics.lineStyle(5, 0x000000, 1);
           graphics.lineBetween(player.x, player.y, sprite.x, sprite.y);
 
         }
@@ -301,30 +276,21 @@
     {
         if (player.body.touching.down) {
           //If the player is on the ground, the player can jump
-          player.setVelocityY(-1100);
-          player.currentJumps++;
-        } else if (player.currentJumps < player.totalJumps) {
-          //If the player is not on the ground but has an available air jump, use that jump
-          player.setVelocityY(-800);
+          player.setVelocityY(-850);
           player.currentJumps++;
         }
     }
-
-
-  /*  function updateCounter()
-    {
-      graphics.setVisible(false);
-    }  */
 
     //This function is called when a player overlaps with a carrot
     function eatCarrot(player, carrot)
     {
         carrot.disableBody(true, true); //remove that particular carrot from the game (physics and visibility)
-        gui.setText('Yum yum!');
+        score += 1;
+        gui.setText('Your score: ' + score);
         guiTimer = this.time.delayedCall(1000, removeText, [], this);
         totalCarrots--;
         if(totalCarrots === 0){
-          gui.setText("Congratulations! You caused a famine!");
+          gui.setText("Congratulations! You have completed the level!");
           guiTimer = this.time.delayedCall([], this);
         }
     }
