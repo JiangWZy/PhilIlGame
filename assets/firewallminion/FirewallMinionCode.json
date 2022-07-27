@@ -1,0 +1,495 @@
+{
+	"frames": {
+		"Fireball0023.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 48,
+				"h": 22
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 22
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 22
+			}
+		},
+		"Fireball0024.png": {
+			"frame": {
+				"x": 51,
+				"y": 1,
+				"w": 48,
+				"h": 22
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 22
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 22
+			}
+		},
+		"FirewallMinionDyingToBeingEaten00017.png": {
+			"frame": {
+				"x": 101,
+				"y": 1,
+				"w": 42,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 42,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 42,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0011.png": {
+			"frame": {
+				"x": 145,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0012.png": {
+			"frame": {
+				"x": 188,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0013.png": {
+			"frame": {
+				"x": 231,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0014.png": {
+			"frame": {
+				"x": 274,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0015.png": {
+			"frame": {
+				"x": 317,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0016.png": {
+			"frame": {
+				"x": 360,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0018.png": {
+			"frame": {
+				"x": 403,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0019.png": {
+			"frame": {
+				"x": 446,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0021.png": {
+			"frame": {
+				"x": 489,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionDyingToBeingEaten0022.png": {
+			"frame": {
+				"x": 532,
+				"y": 1,
+				"w": 41,
+				"h": 59
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 41,
+				"h": 59
+			},
+			"sourceSize": {
+				"w": 41,
+				"h": 59
+			}
+		},
+		"FirewallMinionShooting0004.png": {
+			"frame": {
+				"x": 575,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0005.png": {
+			"frame": {
+				"x": 625,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0006.png": {
+			"frame": {
+				"x": 675,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0007.png": {
+			"frame": {
+				"x": 725,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0008.png": {
+			"frame": {
+				"x": 775,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0009.png": {
+			"frame": {
+				"x": 825,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionShooting0010.png": {
+			"frame": {
+				"x": 875,
+				"y": 1,
+				"w": 48,
+				"h": 61
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 48,
+				"h": 61
+			},
+			"sourceSize": {
+				"w": 48,
+				"h": 61
+			}
+		},
+		"FirewallMinionWalking0000.png": {
+			"frame": {
+				"x": 925,
+				"y": 1,
+				"w": 38,
+				"h": 64
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 38,
+				"h": 64
+			},
+			"sourceSize": {
+				"w": 38,
+				"h": 64
+			}
+		},
+		"FirewallMinionWalking0001.png": {
+			"frame": {
+				"x": 965,
+				"y": 1,
+				"w": 37,
+				"h": 64
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 37,
+				"h": 64
+			},
+			"sourceSize": {
+				"w": 37,
+				"h": 64
+			}
+		},
+		"FirewallMinionWalking0002.png": {
+			"frame": {
+				"x": 1004,
+				"y": 1,
+				"w": 37,
+				"h": 64
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 37,
+				"h": 64
+			},
+			"sourceSize": {
+				"w": 37,
+				"h": 64
+			}
+		},
+		"FirewallMinionWalking0003.png": {
+			"frame": {
+				"x": 1043,
+				"y": 1,
+				"w": 37,
+				"h": 64
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 37,
+				"h": 64
+			},
+			"sourceSize": {
+				"w": 37,
+				"h": 64
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 1081,
+			"h": 66
+		},
+		"scale": "1"
+	}
+}
