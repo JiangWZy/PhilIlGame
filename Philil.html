@@ -12,6 +12,8 @@
 <body>
 
     <script>
+    //comment here
+    //Who is Joe!??????
     var config = {
         type: Phaser.AUTO,
         width: 1200,
@@ -96,12 +98,8 @@
     function create()
     {
 
-<<<<<<< HEAD
       this.add.image(400, 400, 'sky');
 //this block of code adds the bunny and makes it so when you click it, it turns red
-=======
-      //this block of code adds the bunny and makes it so when you click it, it turns red
->>>>>>> 7e21f7eacd9fcc18d8fe8921d0a0dc520aeb1352
       sprite = this.add.sprite(400,300, 'player').setInteractive();
       this.physics.add.existing(sprite);
       //makes bunny unable to be moved
@@ -116,6 +114,7 @@
        sprite.on('pointerup', function (pointer) {
          this.clearTint();
        });
+
        //end bunny red
 
        //lasso where cursor is
@@ -150,9 +149,10 @@
            gameObject.y = dragY;
            //pX = gameObject.x;
           // pY = gameObject.y;
-          graphics.lineStyle(1, 0x00ff00, 1);
+          graphics.lineStyle(1, 0x000000, 1);
 
-          graphics.lineBetween(100, 100, dragX, dragY);
+          graphics.lineBetween(player.x, player.y, dragX, dragY);
+
          });
 
          dragCount--;
@@ -170,6 +170,7 @@
        player = new Player(this, 400, 400);
        this.physics.add.collider(player, platforms,);
        this.physics.add.collider(player, sprite);
+
 
        //Create the carrot interactables
        for (var i = 0; i < totalCarrots; i++)
@@ -208,11 +209,13 @@
         platforms.create(950, 500, 'platform'); //creates the bottome right platform
 
 
+
+
+
     }
 
     function update()
     {
-
         if(totalCarrots > 0){
         //Player will not move in the x-axis unless a movement key is being pressed
           player.setVelocityX(0);
@@ -259,7 +262,7 @@
         guiTimer = this.time.delayedCall(1000, removeText, [], this);
         totalCarrots--;
         if(totalCarrots === 0){
-          gui.setText("You win!");
+          gui.setText("Congratulations! You caused a famine!");
           guiTimer = this.time.delayedCall([], this);
         }
     }
