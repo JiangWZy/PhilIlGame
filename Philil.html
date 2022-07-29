@@ -52,7 +52,7 @@
             scene.add.existing(this);
             scene.physics.add.existing(this);
             this.setCollideWorldBounds(true);
-            this.setGravityY(1000);
+            this.setGravityY(0);
         }
     }
 
@@ -61,6 +61,9 @@
 
     //Game Objects
     var platforms;
+    var invisplatforms;
+    var basePlatform;
+
     var player;
     var carrots = [];
     var totalCarrots = 24;
@@ -80,6 +83,12 @@
     var gui;
     var guiTimer;
     var sprite;
+    var sprite1;
+    var sprite2;
+    var sprite3;
+    var sprite4;
+    var sprite5;
+    var base;
 
 
 
@@ -97,6 +106,12 @@
       //this.load.atlas('partner', 'assets/platform/Glitched_Platform.png', 'assets/platform/Glitched_Platform.json')
       this.load.image('carrot', 'assets/mutations/Energy.png');
       this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', { frameWidth: 50, frameHeight: 21 });
+      this.load.image('base', 'assets/start.png');
+      this.load.image('iexplorer', 'assets/explore.png');
+      this.load.image('icon1', 'assets/folder.png');
+      this.load.image('icon2', 'assets/computer.png');
+      this.load.image('icon3', 'assets/disc.png');
+      this.load.image('icon4', 'assets/compooter.png');
     }
 
     function create()
@@ -116,7 +131,7 @@
     //  let spriteAnimations = [];
     //  var spriteIdle = this.anims.create({key: 'partner', frames: this.anims.generateFrameNames('partner_platform', {prefix: 'Glitched_Platform', end: 2, zeroPad: 4}), repeat: -1, frameRate: 10});
     //  spriteAnimations['spriteIdle'] = spriteIdle;
-      sprite = this.add.sprite(400, 300, 'partner');
+      sprite = this.add.sprite(400, 700, 'partner');
       sprite.setScale(2);
       sprite.setInteractive();
       this.physics.add.existing(sprite);
@@ -129,6 +144,9 @@
       });
 
       sprite.play("eyedle");
+
+
+
 
 
 
@@ -181,7 +199,8 @@
        for (var i = 0; i < totalCarrots; i++)
        {
            let myCarrot = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
-           this.physics.add.collider(myCarrot, platforms);
+           this.physics.add.collider(myCarrot, invisplatforms);
+           this.physics.add.collider(myCarrot, basePlatform);
            carrots.push(myCarrot);
        }
 
@@ -200,16 +219,17 @@
     function createPlatforms(scene)
     {
         platforms = scene.physics.add.staticGroup();
-        platforms2 = scene.physics.add.staticGroup()
+        invisplatforms = scene.physics.add.staticGroup()
 
         //basePlatform is the floor of the game
-        let basePlatform = platforms.create(game.scale.width/2, game.scale.height-30, 'platform');
-        basePlatform.setScale(3, 1).refreshBody(); //scales the base platform in the x axis to cover the entire floor
 
-        platforms.create(250, 350, 'platform'); //creates the upper left platform
-        platforms.create(950, 500, 'platform'); //creates the bottome right platform
-        platforms.create(400, 100, 'platform'); //third platform baybee
-        platforms.create(1000, 200, 'platform'); //anotha won
+        basePlatform = platforms.create(game.scale.width/2, game.scale.height-30, 'base');
+        basePlatform.setScale(2.2, 2.5).refreshBody(); //scales the base platform in the x axis to cover the entire floor
+
+        invisplatforms.create(250, 350, 'platform'); //creates the upper left platform
+        invisplatforms.create(950, 500, 'platform'); //creates the bottome right platform
+        invisplatforms.create(400, 100, 'platform'); //third platform baybee
+        invisplatforms.create(1000, 200, 'platform'); //anotha won
 
 
 
