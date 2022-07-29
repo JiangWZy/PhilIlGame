@@ -55,11 +55,10 @@
             scene.add.existing(this);
             scene.physics.add.existing(this);
             this.setCollideWorldBounds(true);
-            this.setGravityY(1000);
+            this.setGravityY(0);
         }
     }
 
-<<<<<<< HEAD
     class Trash extends Phaser.Physics.Arcade.Sprite{
       contructor(scene, x, y){
         trash(scene, x, y, 'trash');
@@ -69,8 +68,6 @@
         this.setGravityY(1000);
       }
     }
-=======
->>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
 
     var game = new Phaser.Game(config);
 
@@ -125,10 +122,8 @@
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
       this.load.atlas('player', 'assets/philil/Philil.png','assets/philil/Philil.json');
-<<<<<<< HEAD
       this.load.image('energy', 'assets/mutations/Energy.png');
       this.load.image('recycle', 'assets/recyclingbin3.png');
-=======
       this.load.atlas('somethingsomething', 'assets/somethingsomething/SomethingSomething.png','assets/somethingsomething/SomethingSomething.json');
       this.load.image('carrot', 'assets/mutations/Energy.png');
       this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', { frameWidth: 50, frameHeight: 21 });
@@ -138,7 +133,6 @@
       this.load.image('icon2', 'assets/computer.png');
       this.load.image('icon3', 'assets/disc.png');
       this.load.image('icon4', 'assets/compooter.png');
->>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
     }
 
     function create()
@@ -159,8 +153,6 @@
       sprite.setScale(2);
       sprite.setInteractive();
       this.physics.add.existing(sprite);
-
-<<<<<<< HEAD
       //creates the animation for the platform
       this.anims.create({
        key: "eyedle",
@@ -171,8 +163,6 @@
 
       sprite.play("eyedle");
 
-=======
->>>>>>> bbb8f11 (more icon platforms)
 
 
 
@@ -197,15 +187,9 @@
          this.input.setDraggable(sprite);
 
         this.input.on('drag', function (pointer, gameObject, dragX, dragY){
-<<<<<<< HEAD
+
            gameObject.x = dragX, playerAnimations;
            gameObject.y = dragY;
-           //pX = gameObject.x;
-          // pY = gameObject.y;
-=======
-          gameObject.x = dragX;
-          gameObject.y = dragY;
->>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
           graphics.lineStyle(10, 0x000000, 1);
          });
 
@@ -363,13 +347,8 @@
 
        //Create the platforms and the player character set to collide with the platforms
        createPlatforms(this);
-<<<<<<< HEAD
-       player = new Player(this, 400, 400, 'player', playerAnimations);
-
-
-=======
        player = new Player(this, 200, 900, 'player', playerAnimations);
->>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
+
        this.physics.add.collider(player, platforms);
        this.physics.add.collider(player, sprite);
        this.physics.add.collider(player, sprite1);
@@ -387,17 +366,11 @@
        //Create the energy interactables
        for (var i = 0; i < totalEnergy; i++)
        {
-<<<<<<< HEAD
-         let myCarrot = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
-         this.physics.add.collider(myCarrot, platforms);
-         energy.push(myCarrot);
-=======
            let myCarrot = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
            this.physics.add.collider(myCarrot, invisplatforms);
            this.physics.add.collider(myCarrot, platforms);
            this.physics.add.collider(myCarrot, basePlatform);
-           carrots.push(myCarrot);
->>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
+           energy.push(myCarrot);
        }
 
        this.physics.add.overlap(player, energy, eatCarrot, null, this);
@@ -431,23 +404,11 @@
 
         //basePlatform is the floor of the game
 
-<<<<<<< HEAD
-        platforms.create(250, 800, 'platform'); //creates the upper left platform
-        platforms.create(950, 700, 'platform'); //creates the bottome right platform
-        platforms.create(400, 400, 'platform'); //third platform baybee
-        platforms.create(1200, 200, 'platform'); //anotha won
-=======
         basePlatform = platforms.create(game.scale.width/2, game.scale.height-30, 'base');
         basePlatform.setScale(2.2, 2.5).refreshBody(); //scales the base platform in the x axis to cover the entire floor
 
-<<<<<<< HEAD
-        platforms.create(250, 700, 'platform'); //creates the upper left platform
-        platforms.create(950, 500, 'platform'); //creates the bottome right platform
-        platforms.create(300, 200, 'platform'); //third platform baybee
-        platforms.create(1000, 150, 'platform'); //anotha won
+
     }
-=======
->>>>>>> bbb8f11 (more icon platforms)
 
     function createSpeechBubble (x, y, width, height, quote)
     {
@@ -495,7 +456,6 @@
         var b = content.getBounds();
 
         content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
->>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
     }
 
     function update()
@@ -511,7 +471,6 @@
         {
           graphics.clear();
         }
-
         //Player will not move in the x-axis unless a movement key is being pressed
           player.setVelocityX(0);
 
@@ -540,13 +499,10 @@
           {
               player.play(player.animations['idle'], true);
           }
-<<<<<<< HEAD
-=======
 
           //play platform animations
           //sprite.play(sprite.animations['spriteIdle'], true);
-      }
->>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
+
     }
 
 
@@ -565,22 +521,12 @@
     {
         energy.disableBody(true, true); //remove that particular carrot from the game (physics and visibility)
         score += 1;
-<<<<<<< HEAD
-        gui.setText('Your score: ' + score);
-        guiTimer = this.time.delayedCall(10000, removeText, [], this);
-        totalEnergy--;
-        if(totalEnergy === 0){
-          gui.setText('Good job, You collected all the energy! Make your way to the recycling bin to make your escape!');
-          console.log(totalEnergy);
-          guiTimer = this.time.delayedCall(100000000000000000000000, removeText, [], this);
-=======
         gui.setText('Energy Collected: ' + score);
         guiTimer = this.time.delayedCall(1000, removeText, [], this);
-        totalCarrots--;
-        if(totalCarrots === 0){
+        totalEnergy--;
+        if(totalEnergy === 0){
           gui.setText("Congratulations! You have completed the level!");
           guiTimer = this.time.delayedCall([], this);
->>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
         }
     }
 
