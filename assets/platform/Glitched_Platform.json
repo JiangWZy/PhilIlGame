@@ -1,0 +1,90 @@
+{
+  "frames": [
+    {
+      "filename": "Glitched_Platform0000.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 21
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Glitched_Platform0001.png",
+      "frame": {
+        "x": 50,
+        "y": 0,
+        "w": 50,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 21
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Glitched_Platform0002.png",
+      "frame": {
+        "x": 100,
+        "y": 0,
+        "w": 50,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 50,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 21
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Glitched_Platform.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 150,
+      "h": 21
+    },
+    "scale": 1
+  }
+}

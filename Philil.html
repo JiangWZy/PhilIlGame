@@ -93,6 +93,7 @@
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
       this.load.atlas('player', 'assets/philil/Philil.png','assets/philil/Philil.json');
+      this.load.atlas('partner', 'assets/platform/Glitched_Platform.png', 'assets/platform/Glitched_Platform.json')
       this.load.image('carrot', 'assets/mutations/Energy.png');
     }
 
@@ -103,14 +104,16 @@
       let playerAnimations = [];
       var idle = this.anims.create({key: 'move_idle', frames: this.anims.generateFrameNames('player', {prefix: 'Idle', end: 3, zeroPad: 4}), repeat: -1, frameRate: 4});
       playerAnimations['idle'] = idle;
-      var left = this.anims.create({key: 'move_left', frames: this.anims.generateFrameNames('player', {prefix: 'RUN', end: 1, zeroPad: 4}), repeat: -1, frameRate:4});
+      var left = this.anims.create({key: 'move_left', frames: this.anims.generateFrameNames('player', {prefix: 'RUN', end: 1, zeroPad: 4}), repeat: -1, frameRate: 8});
       playerAnimations['left'] = left;
-      var right = this.anims.create({key: 'move_right', frames: this.anims.generateFrameNames('player', {prefix: 'RUN', end: 1, zeroPad: 4}), repeat: -1, frameRate: 4});
+      var right = this.anims.create({key: 'move_right', frames: this.anims.generateFrameNames('player', {prefix: 'RUN', end: 1, zeroPad: 4}), repeat: -1, frameRate: 8});
       playerAnimations['right'] = right;
 
-      //this block of code adds the bunny and makes it so when you click it, it turns green
-      sprite = this.add.sprite(400,300, 'player').setInteractive();
+      //this block of code adds the moveable platform
+      //it also makes it so when you click it, it turns green
+      sprite = this.add.sprite(400,300, 'partner').setInteractive();
       this.physics.add.existing(sprite);
+
       //makes bunny unable to be moved
       sprite.body.immovable = true;
 
@@ -205,7 +208,7 @@
           graphics.lineBetween(player.x, player.y, sprite.x, sprite.y);
 
         }
-        if(game.input.mousePointer.isUp)
+        if(!game.input.mousePointer.isDown)
         {
           graphics.clear();
         }
@@ -226,14 +229,13 @@
           //Handle player movements
           if (cursors.left.isDown || keys.A.isDown)
           {
-              player.setVelocityX(-400);
+              player.setVelocityX(-600);
               player.play(player.animations['left'], true);
               player.flipX = true
           }
-
           else if (cursors.right.isDown || keys.D.isDown)
           {
-              player.setVelocityX(400);
+              player.setVelocityX(600);
               player.play(player.animations['right'], true);
               player.flipX = false
           }
@@ -248,7 +250,7 @@
     {
         if (player.body.touching.down) {
           //If the player is on the ground, the player can jump
-          player.setVelocityY(-850);
+          player.setVelocityY(-1000);
           player.currentJumps++;
         }
     }
