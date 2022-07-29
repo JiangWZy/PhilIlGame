@@ -38,7 +38,7 @@
             this.animations = animations;
             scene.add.existing(this);
             scene.physics.add.existing(this);
-            this.setScale(2);
+            this.setScale(1.5);
             this.setCollideWorldBounds(true);
             this.setGravityY(3000); //We will set gravity *per object* rather than for the scene!
         }
@@ -55,6 +55,7 @@
             this.setGravityY(1000);
         }
     }
+
 
     var game = new Phaser.Game(config);
 
@@ -93,8 +94,9 @@
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
       this.load.atlas('player', 'assets/philil/Philil.png','assets/philil/Philil.json');
-      this.load.atlas('partner', 'assets/platform/Glitched_Platform.png', 'assets/platform/Glitched_Platform.json')
+      //this.load.atlas('partner', 'assets/platform/Glitched_Platform.png', 'assets/platform/Glitched_Platform.json')
       this.load.image('carrot', 'assets/mutations/Energy.png');
+      this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', { frameWidth: 50, frameHeight: 21 });
     }
 
     function create()
@@ -111,8 +113,24 @@
 
       //this block of code adds the moveable platform
       //it also makes it so when you click it, it turns green
-      sprite = this.add.sprite(400,300, 'partner').setInteractive();
+    //  let spriteAnimations = [];
+    //  var spriteIdle = this.anims.create({key: 'partner', frames: this.anims.generateFrameNames('partner_platform', {prefix: 'Glitched_Platform', end: 2, zeroPad: 4}), repeat: -1, frameRate: 10});
+    //  spriteAnimations['spriteIdle'] = spriteIdle;
+      sprite = this.add.sprite(400, 300, 'partner');
+      sprite.setScale(2);
+      sprite.setInteractive();
       this.physics.add.existing(sprite);
+
+      this.anims.create({
+       key: "eyedle",
+       frameRate: 10,
+       frames: this.anims.generateFrameNumbers('partner', { start: 0, end: 2}),
+       repeat: -1
+      });
+
+      sprite.play("eyedle");
+
+
 
       //makes bunny unable to be moved
       sprite.body.immovable = true;
@@ -243,6 +261,9 @@
           {
               player.play(player.animations['idle'], true);
           }
+
+          //play platform animations
+          //sprite.play(sprite.animations['spriteIdle'], true);
       }
     }
 
