@@ -64,6 +64,9 @@
 
     //Game Objects
     var platforms;
+    var invisplatforms;
+    var basePlatform;
+
     var player;
     var carrots = [];
     var totalCarrots = 24;
@@ -83,6 +86,12 @@
     var gui;
     var guiTimer;
     var sprite;
+    var sprite1;
+    var sprite2;
+    var sprite3;
+    var sprite4;
+    var sprite5;
+    var base;
 
 
 
@@ -99,7 +108,13 @@
       this.load.atlas('player', 'assets/philil/Philil.png','assets/philil/Philil.json');
       this.load.atlas('somethingsomething', 'assets/somethingsomething/SomethingSomething.png','assets/somethingsomething/SomethingSomething.json');
       this.load.image('carrot', 'assets/mutations/Energy.png');
-      this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', {frameWidth: 50, frameHeight: 21 });
+      this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', { frameWidth: 50, frameHeight: 21 });
+      this.load.image('base', 'assets/start.png');
+      this.load.image('iexplorer', 'assets/explore.png');
+      this.load.image('icon1', 'assets/folder.png');
+      this.load.image('icon2', 'assets/computer.png');
+      this.load.image('icon3', 'assets/disc.png');
+      this.load.image('icon4', 'assets/compooter.png');
     }
 
     function create()
@@ -130,6 +145,9 @@
       });
 
       sprite.play("eyedle");
+
+
+
 
 
 
@@ -175,7 +193,9 @@
        for (var i = 0; i < totalCarrots; i++)
        {
            let myCarrot = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
+           this.physics.add.collider(myCarrot, invisplatforms);
            this.physics.add.collider(myCarrot, platforms);
+           this.physics.add.collider(myCarrot, basePlatform);
            carrots.push(myCarrot);
        }
 
@@ -198,11 +218,12 @@
     function createPlatforms(scene)
     {
         platforms = scene.physics.add.staticGroup();
-        platforms2 = scene.physics.add.staticGroup()
+        invisplatforms = scene.physics.add.staticGroup()
 
         //basePlatform is the floor of the game
-        let basePlatform = platforms.create(game.scale.width/2, game.scale.height-30, 'platform');
-        basePlatform.setScale(3, 1).refreshBody(); //scales the base platform in the x axis to cover the entire floor
+
+        basePlatform = platforms.create(game.scale.width/2, game.scale.height-30, 'base');
+        basePlatform.setScale(2.2, 2.5).refreshBody(); //scales the base platform in the x axis to cover the entire floor
 
         platforms.create(250, 700, 'platform'); //creates the upper left platform
         platforms.create(950, 500, 'platform'); //creates the bottome right platform
