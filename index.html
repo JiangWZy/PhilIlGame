@@ -524,27 +524,25 @@
         gui.setText('Energy Collected: ' + score);
         guiTimer = this.time.delayedCall(1000, removeText, [], this);
         totalEnergy--;
-        if(totalEnergy === 0){
-          gui.setText("Congratulations! You have completed the level!");
-          guiTimer = this.time.delayedCall([], this);
-        }
     }
 
     function gameEnd (player, trash) {
+      if(totalEnergy == 0){
       endGame = true;
       console.log('endgame');
       gameFreeze();
     }
+    }
     function gameFreeze() {
-      if (totalEnergy == 0 && endGame) {
+        if(endGame === true){
+
         gui.setText("Congratulations! You have completed this level!");
         console.log('everyone die lmao');
         player.disableBody(true, true);
         sprite.setVisible(false);
         graphics.setVisible(false);
-
       }
-    }
+      }
     //Reset the gui text to be empty after the guiTimer elapses
     function removeText()
     {
