@@ -25,6 +25,9 @@
             preload: preload,
             create: create,
             update: update,
+            extend: {
+                createSpeechBubble: createSpeechBubble
+            }
         }
 
     };
@@ -94,9 +97,9 @@
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
       this.load.atlas('player', 'assets/philil/Philil.png','assets/philil/Philil.json');
-      //this.load.atlas('partner', 'assets/platform/Glitched_Platform.png', 'assets/platform/Glitched_Platform.json')
+      this.load.atlas('somethingsomething', 'assets/somethingsomething/SomethingSomething.png','assets/somethingsomething/SomethingSomething.json');
       this.load.image('carrot', 'assets/mutations/Energy.png');
-      this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', { frameWidth: 50, frameHeight: 21 });
+      this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', {frameWidth: 50, frameHeight: 21 });
     }
 
     function create()
@@ -113,14 +116,12 @@
 
       //this block of code adds the moveable platform
       //it also makes it so when you click it, it turns green
-    //  let spriteAnimations = [];
-    //  var spriteIdle = this.anims.create({key: 'partner', frames: this.anims.generateFrameNames('partner_platform', {prefix: 'Glitched_Platform', end: 2, zeroPad: 4}), repeat: -1, frameRate: 10});
-    //  spriteAnimations['spriteIdle'] = spriteIdle;
-      sprite = this.add.sprite(400, 300, 'partner');
+      sprite = this.add.sprite(400, 900, 'partner');
       sprite.setScale(2);
       sprite.setInteractive();
       this.physics.add.existing(sprite);
 
+      //creates the animation for the platform
       this.anims.create({
        key: "eyedle",
        frameRate: 10,
@@ -144,7 +145,6 @@
        sprite.on('pointerup', function (pointer) {
          this.clearTint();
        });
-
        //end bunny green
 
         graphics = this.add.graphics();
@@ -152,15 +152,9 @@
          this.input.setDraggable(sprite);
 
         this.input.on('drag', function (pointer, gameObject, dragX, dragY){
-           gameObject.x = dragX;
-           gameObject.y = dragY;
-           //pX = gameObject.x;
-          // pY = gameObject.y;
+          gameObject.x = dragX;
+          gameObject.y = dragY;
           graphics.lineStyle(10, 0x000000, 1);
-
-        //  graphics.destroy();
-        //  graphics.setVisible(false);
-
          });
 
 
@@ -172,7 +166,7 @@
 
        //Create the platforms and the player character set to collide with the platforms
        createPlatforms(this);
-       player = new Player(this, 400, 400, 'player', playerAnimations);
+       player = new Player(this, 200, 900, 'player', playerAnimations);
        this.physics.add.collider(player, platforms);
        this.physics.add.collider(player, sprite);
 
@@ -195,6 +189,10 @@
 
        gui = this.add.text(16, 16, '', {fontSize: '32px', fill: '#000'});
 
+       //Create speech bubble
+       this.createSpeechBubble(1050, 800, 290, 100, '“Use WASD to move, SPACE to jump, and click and hold to drag platforms! You cannot stand on a platform that is being held!”');
+
+
     }
 
     function createPlatforms(scene)
@@ -206,15 +204,58 @@
         let basePlatform = platforms.create(game.scale.width/2, game.scale.height-30, 'platform');
         basePlatform.setScale(3, 1).refreshBody(); //scales the base platform in the x axis to cover the entire floor
 
-        platforms.create(250, 350, 'platform'); //creates the upper left platform
+        platforms.create(250, 700, 'platform'); //creates the upper left platform
         platforms.create(950, 500, 'platform'); //creates the bottome right platform
-        platforms.create(400, 100, 'platform'); //third platform baybee
-        platforms.create(1000, 200, 'platform'); //anotha won
+        platforms.create(300, 200, 'platform'); //third platform baybee
+        platforms.create(1000, 150, 'platform'); //anotha won
+    }
 
+    function createSpeechBubble (x, y, width, height, quote)
+    {
+        var bubbleWidth = width;
+        var bubbleHeight = height;
+        var bubblePadding = 10;
+        var arrowHeight = bubbleHeight / 4;
 
+        var bubble = this.add.graphics({ x: x, y: y });
 
+        //  Bubble shadow
+        bubble.fillStyle(0x222222, 0.5);
+        bubble.fillRoundedRect(6, 6, bubbleWidth, bubbleHeight, 16);
 
+        //  Bubble color
+        bubble.fillStyle(0xffffff, 1);
 
+        //  Bubble outline line style
+        bubble.lineStyle(4, 0x565656, 1);
+
+        //  Bubble shape and outline
+        bubble.strokeRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
+        bubble.fillRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
+
+        //  Calculate arrow coordinates
+        var point1X = Math.floor(bubbleWidth / 7);
+        var point1Y = bubbleHeight;
+        var point2X = Math.floor((bubbleWidth / 7) * 2);
+        var point2Y = bubbleHeight;
+        var point3X = Math.floor(bubbleWidth / 7);
+        var point3Y = Math.floor(bubbleHeight + arrowHeight);
+
+        //  Bubble arrow shadow
+        bubble.lineStyle(4, 0x222222, 0.5);
+        bubble.lineBetween(point2X - 1, point2Y + 6, point3X + 2, point3Y);
+
+        //  Bubble arrow fill
+        bubble.fillTriangle(point1X, point1Y, point2X, point2Y, point3X, point3Y);
+        bubble.lineStyle(2, 0x565656, 1);
+        bubble.lineBetween(point2X, point2Y, point3X, point3Y);
+        bubble.lineBetween(point1X, point1Y, point3X, point3Y);
+
+        var content = this.add.text(0, 0, quote, { fontFamily: 'Arial', fontSize: 18, color: '#000000', align: 'center', wordWrap: { width: bubbleWidth - (bubblePadding * 2) } });
+
+        var b = content.getBounds();
+
+        content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
     }
 
     function update()
@@ -281,7 +322,7 @@
     {
         carrot.disableBody(true, true); //remove that particular carrot from the game (physics and visibility)
         score += 1;
-        gui.setText('Your score: ' + score);
+        gui.setText('Energy Collected: ' + score);
         guiTimer = this.time.delayedCall(1000, removeText, [], this);
         totalCarrots--;
         if(totalCarrots === 0){
