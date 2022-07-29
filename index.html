@@ -206,7 +206,6 @@
                sprite.disableInteractive();
              }
 
-             gameObject.clearTint();
            });
         }
 
@@ -334,7 +333,11 @@
 
                  sprite3.on('pointerdown', function (pointer) {
                    count3--;
+                   if(count === 0){
+                     this.setTint(0xff0000);
+                   }
                    this.setTint(0x00ff00);
+
                  });
                  sprite3.on('pointerout', function (pointer) {
                    this.clearTint();
@@ -394,7 +397,7 @@
                          sprite5.disableInteractive();
                        }
 
-                       gameObject.clearTint();
+                       gameObject.setTint(0x00ff00);
                      });
 
 
