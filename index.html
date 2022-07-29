@@ -163,6 +163,7 @@
 
          this.input.setDraggable(sprite);
 
+<<<<<<< HEAD
         this.input.on('drag', function (pointer, gameObject, dragX, dragY){
           gameObject.x = dragX;
           gameObject.y = dragY;
@@ -173,6 +174,221 @@
          this.input.on('drag', function (pointer, gameObject) {
 
            gameObject.clearTint();
+=======
+           this.input.on('drag', function (pointer, gameObject) {
+             if(dragCountGlitch <= 0)
+             {
+               sprite.disableInteractive();
+             }
+
+           });
+        }
+
+
+
+         sprite1 = this.add.sprite(100, 300, 'icon1');
+         sprite1.setScale(2);
+         sprite1.setInteractive();
+         this.physics.add.existing(sprite1);
+         sprite1.setScale(2);
+
+
+         //makes bunny unable to be moved
+         sprite1.body.immovable = true;
+         let count1 = 1;
+
+          sprite1.on('pointerdown', function (pointer) {
+            count1--;
+            this.setTint(0x00ff00);
+          });
+          sprite1.on('pointerout', function (pointer) {
+            this.clearTint();
+          });
+          sprite1.on('pointerup', function (pointer) {
+            this.clearTint();
+          });
+
+
+
+          //end bunny green
+           graphics = this.add.graphics();
+
+          this.input.setDraggable(sprite1);
+
+          this.input.on('drag', function (pointer, gameObject) {
+             if(count1 <= 0)
+             {
+               sprite1.disableInteractive();
+             }
+
+             gameObject.clearTint();
+           });
+
+            sprite2 = this.add.sprite(100, 500, 'icon2');
+            sprite2.setScale(2);
+            sprite2.setInteractive();
+            this.physics.add.existing(sprite2);
+
+
+            //makes bunny unable to be moved
+            sprite2.body.immovable = true;
+            let count2 = 1;
+
+             sprite2.on('pointerdown', function (pointer) {
+               count2--;
+               this.setTint(0x00ff00);
+             });
+             sprite2.on('pointerout', function (pointer) {
+               this.clearTint();
+             });
+             sprite2.on('pointerup', function (pointer) {
+               this.clearTint();
+             });
+
+             //end bunny green
+
+              graphics = this.add.graphics();
+
+              this.input.setDraggable(sprite2);
+
+              this.input.on('drag', function (pointer, gameObject) {
+                if(count2 <= 0)
+                {
+                 sprite2.disableInteractive();
+                }
+
+                  gameObject.clearTint();
+              });
+
+
+
+               sprite4 = this.add.sprite(100, 600, 'icon4');
+               sprite4.setScale(2);
+               sprite4.setInteractive();
+               this.physics.add.existing(sprite4);
+
+               //makes bunny unable to be moved
+               sprite4.body.immovable = true;
+               let count4 = 1;
+
+                sprite4.on('pointerdown', function (pointer) {
+                  count4--;
+                  this.setTint(0x00ff00);
+                });
+                sprite4.on('pointerout', function (pointer) {
+                  this.clearTint();
+                });
+                sprite4.on('pointerup', function (pointer) {
+                  this.clearTint();
+                });
+
+                this.input.setDraggable(sprite4);
+
+                this.input.on('drag', function (pointer, gameObject) {
+                   if(count4 <= 0)
+                   {
+                     sprite4.disableInteractive();
+                   }
+
+                   gameObject.clearTint();
+                 });
+
+
+
+                sprite3 = this.add.sprite(100, 400, 'icon3');
+                sprite3.setScale(2);
+                sprite3.setInteractive();
+                this.physics.add.existing(sprite3);
+                sprite3.setScale(2);
+
+
+                //makes bunny unable to be moved
+                sprite3.body.immovable = true;
+                let count3 = 1;
+
+                 sprite3.on('pointerdown', function (pointer) {
+                   count3--;
+                   if(count === 0){
+                     this.setTint(0xff0000);
+                   }
+                   this.setTint(0x00ff00);
+
+                 });
+                 sprite3.on('pointerout', function (pointer) {
+                   this.clearTint();
+                 });
+                 sprite3.on('pointerup', function (pointer) {
+                   this.clearTint();
+                 });
+
+
+
+                 //end bunny green
+
+                  graphics = this.add.graphics();
+
+                   this.input.setDraggable(sprite3);
+
+
+                   this.input.on('drag', function (pointer, gameObject) {
+                     if(count3 <= 0)
+                     {
+                       sprite3.disableInteractive();
+                     }
+
+                     gameObject.clearTint();
+                   });
+
+                   sprite5 = this.add.sprite(100, 700, 'iexplorer');
+                   sprite5.setInteractive();
+                   this.physics.add.existing(sprite5);
+                   sprite5.setScale(.2);
+
+
+                   //makes bunny unable to be moved
+                   sprite5.body.immovable = true;
+                   let count5 = 1;
+
+                    sprite5.on('pointerdown', function (pointer) {
+                      count5--;
+                      this.setTint(0x00ff00);
+                    });
+                    sprite5.on('pointerout', function (pointer) {
+                      this.clearTint();
+                    });
+                    sprite5.on('pointerup', function (pointer) {
+                      this.clearTint();
+                    });
+
+                    //end bunny green
+
+                     graphics = this.add.graphics();
+
+                    this.input.setDraggable(sprite5);
+
+                    this.input.on('drag', function (pointer, gameObject) {
+                       if(count5 <= 0)
+                       {
+                         sprite5.disableInteractive();
+                       }
+
+                       gameObject.setTint(0x00ff00);
+                     });
+
+
+
+
+            /*      this.input.on('drag', function (pointer, gameObject) {
+
+                    gameObject.setTint(0x00ff00);
+                  }); */
+
+         this.anims.create({
+          key: "eyedle",
+          frameRate: 10,
+          frames: this.anims.generateFrameNumbers('partner', { start: 0, end: 2}),
+          repeat: -1
+>>>>>>> 20014e2e3f0c366fd66435707e17e8f2b8a9c641
          });
 
 
