@@ -52,7 +52,7 @@
             scene.add.existing(this);
             scene.physics.add.existing(this);
             this.setCollideWorldBounds(true);
-            this.setGravityY(0);
+            this.setGravityY(1000);
         }
     }
 
@@ -200,6 +200,7 @@
        {
            let myCarrot = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
            this.physics.add.collider(myCarrot, invisplatforms);
+           this.physics.add.collider(myCarrot, platforms);
            this.physics.add.collider(myCarrot, basePlatform);
            carrots.push(myCarrot);
        }
