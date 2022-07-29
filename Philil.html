@@ -72,7 +72,7 @@
     var platforms;
     var player;
     var energy = [];
-    var totalEnergy = 1;
+    var totalEnergy = 24;
     var score = 0;
 
     var graphics;
@@ -179,9 +179,7 @@
        // make it unable to move from spawn
 
        let trash = this.physics.add.sprite(1350, 75, 'recycle')//Trash(this,1350, 75);
-       this.physics.add.collider(trash, player, gameFreeze);
-       console.log("Hi");
-
+       trash.body.immovable = true;
 
        //Create the energy interactables
        for (var i = 0; i < totalEnergy; i++)
@@ -193,7 +191,7 @@
 
        this.physics.add.overlap(player, energy, eatCarrot, null, this);
        //registers when the player collides with the trash
-       this.physics.add.overlap(player, trash, gameFreeze, null, this);
+       this.physics.add.overlap(player, trash, gameEnd, null, this);
 
        //Set up user input
        cursors = this.input.keyboard.createCursorKeys();
@@ -291,17 +289,27 @@
         guiTimer = this.time.delayedCall(10000, removeText, [], this);
         totalEnergy--;
         if(totalEnergy === 0){
-          gui.setText("Congratulations! You collected all the energy! Make your way to the recycling bin to make your escape!");
+          gui.setText('Good job, You collected all the energy! Make your way to the recycling bin to make your escape!');
           console.log(totalEnergy);
-          guiTimer = this.time.delayedCall(10000, removeText, [], this);
+          guiTimer = this.time.delayedCall(100000000000000000000000, removeText, [], this);
         }
     }
 
-    function gameFreeze(player, trash) {
+    function gameEnd (player, trash) {
       endGame = true;
-      console.log("game stopped gg wp");
+      console.log('endgame');
+      gameFreeze();
     }
+    function gameFreeze() {
+      if (totalEnergy == 0 && endGame) {
+        gui.setText("Congratulations! You have completed this level!");
+        console.log('everyone die lmao');
+        player.disableBody(true, true);
+        sprite.setVisible(false);
+        graphics.setVisible(false);
 
+      }
+    }
     //Reset the gui text to be empty after the guiTimer elapses
     function removeText()
     {
