@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+
+</head>
+
+<body>
+
+    <script>
+
+    var config = {
+        type: Phaser.AUTO,
+        width: 1400,
+        height: 1050,
+        physics: {
+            default: 'arcade',
+        },
+        backgroundColor: '#047e7e',
+        scene: {
+            preload: preload,
+            create: create,
+            update: update,
+            extend: {
+                createSpeechBubble: createSpeechBubble
+            }
+        }
+
+    };
+
+    class Player extends Phaser.Physics.Arcade.Sprite
+    {
+        animations;
+        constructor(scene, x, y, spritesheet, animations)
+        {
+            super(scene, x, y, spritesheet);
+            this.animations = animations;
+            scene.add.existing(this);
+            scene.physics.add.existing(this);
+            this.setScale(1.5);
+            this.setCollideWorldBounds(true);
+            this.setGravityY(3000); //We will set gravity *per object* rather than for the scene!
+        }
+    }
+
+    class Carrot extends Phaser.Physics.Arcade.Sprite
+    {
+        constructor(scene, x, y)
+        {
+            super(scene, x, y, 'energy');
+            scene.add.existing(this);
+            scene.physics.add.existing(this);
+            this.setCollideWorldBounds(true);
+            this.setGravityY(0);
+        }
+    }
+
+    class Trash extends Phaser.Physics.Arcade.Sprite{
+      contructor(scene, x, y){
+        trash(scene, x, y, 'trash');
+        scene.add.existing(this);
+        scene.physics.add.existing(this);
+        this.setCollideWorldBounds(true);
+        this.setGravityY(1000);
+      }
+    }
+
+    var game = new Phaser.Game(config);
+
+    //Game Objects
+    var platforms;
+    var invisplatforms;
+    var basePlatform;
+
+    var player;
+    var energy = [];
+<<<<<<< HEAD:Philil.html
+    var totalEnergy = 12;
+=======
+    var totalEnergy = 24;
+>>>>>>> e6146c761fd4da79d4f048bf68158f1e781f1107:index.html
+    var score = 0;
+
+    var graphics;
+    var line;
+
+    var pX;
+    var pY;
+
+    //Keyboard controls
+    var cursors;
+    var keys;
+    var space;
+
+    var gui;
+    var guiTimer;
+    var sprite;
+    var sprite1;
+    var sprite2;
+    var sprite3;
+    var sprite4;
+    var sprite5;
+    var base;
+    var something
+
+    //trash Objects
+    var trash = [];
+    var exit;
+    var counter = 0;
+
+    var endGame = false;
+
+
+
+    //grant - loads EVERYTHING (background, assets, etc.)
+    function preload()
+    {
+      this.load.image('sky', 'assets/clouds.png');
+      this.load.image('platform', 'assets/platform.png');
+      this.load.image('doublejump', 'assets/mutations/doubleJumpMutationIcon.png');
+      this.load.image('laser', 'assets/mutations/laserMutationIcon.png');
+      this.load.image('shield', 'assets/mutations/shieldMutationIcon.png');
+      this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
+      this.load.image('lassoString', 'assets/lasso/lassoString.png');
+      this.load.atlas('player', 'assets/philil/Philil.png','assets/philil/Philil.json');
+<<<<<<< HEAD:Philil.html
+      this.load.atlas('somethingsomething', 'assets/somethingsomething/SomethingSomething.png', 'assets/somethingsomething/SomethingSomething.json');
+=======
+      this.load.image('energy', 'assets/mutations/Energy.png');
+      this.load.image('recycle', 'assets/recyclingbin3.png');
+      this.load.atlas('somethingsomething', 'assets/somethingsomething/SomethingSomething.png','assets/somethingsomething/SomethingSomething.json');
+>>>>>>> e6146c761fd4da79d4f048bf68158f1e781f1107:index.html
+      this.load.image('carrot', 'assets/mutations/Energy.png');
+      this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', { frameWidth: 50, frameHeight: 21 });
+      this.load.image('base', 'assets/start.png');
+      this.load.image('iexplorer', 'assets/explore.png');
+      this.load.image('icon1', 'assets/folder.png');
+      this.load.image('icon2', 'assets/computer.png');
+      this.load.image('icon3', 'assets/disc.png');
+      this.load.image('icon4', 'assets/compooter.png');
+    }
+
+    function create()
+    {
+
+      //creates the animations UGHHHHHHHHHHHHHHHHHHHHHHHHHHHHH >:(
+      let playerAnimations = [];
+      var idle = this.anims.create({key: 'move_idle', frames: this.anims.generateFrameNames('player', {prefix: 'Idle', end: 3, zeroPad: 4}), repeat: -1, frameRate: 4});
+      playerAnimations['idle'] = idle;
+      var left = this.anims.create({key: 'move_left', frames: this.anims.generateFrameNames('player', {prefix: 'RUN', end: 1, zeroPad: 4}), repeat: -1, frameRate: 8});
+      playerAnimations['left'] = left;
+      var right = this.anims.create({key: 'move_right', frames: this.anims.generateFrameNames('player', {prefix: 'RUN', end: 1, zeroPad: 4}), repeat: -1, frameRate: 8});
+      playerAnimations['right'] = right;
+
+      //this block of code adds the moveable platform
+      //it also makes it so when you click it, it turns green
+      sprite = this.add.sprite(400, 900, 'partner');
+      sprite.setScale(2);
+      sprite.setInteractive();
+      this.physics.add.existing(sprite);
+      //creates the animation for the platform
+      this.anims.create({
+       key: "eyedle",
+       frameRate: 10,
+       frames: this.anims.generateFrameNumbers('partner', { start: 0, end: 2}),
+       repeat: -1
+      });
+      sprite.play("eyedle");
+
+      //makes bunny unable to be moved
+      sprite.body.immovable = true;
+
+      //how many times can be dragged
+      let dragCountGlitch = 3;
+
+       sprite.on('pointerdown', function (pointer) {
+         dragCountGlitch--;
+         this.setTint(0x00ff00);
+       });
+       sprite.on('pointerout', function (pointer) {
+         this.clearTint();
+       });
+       sprite.on('pointerup', function (pointer) {
+         this.clearTint();
+       });
+       //end bunny green
+
+        graphics = this.add.graphics();
+
+        if(dragCountGlitch > 0)
+        {
+          this.input.setDraggable(sprite);
+          this.input.on('drag', function (pointer, gameObject, dragX, dragY){
+             gameObject.x = dragX;
+             gameObject.y = dragY;
+             graphics.lineStyle(10, 0x000000, 1);
+           });
+
+           this.input.on('drag', function (pointer, gameObject) {
+             if(dragCountGlitch <= 0)
+             {
+               sprite.disableInteractive();
+             }
+
+             gameObject.clearTint();
+           });
+        }
+
+
+
+         sprite1 = this.add.sprite(100, 300, 'icon1');
+         sprite1.setScale(2);
+         sprite1.setInteractive();
+         this.physics.add.existing(sprite1);
+         sprite1.setScale(2);
+
+
+         //makes bunny unable to be moved
+         sprite1.body.immovable = true;
+         let count1 = 1;
+
+          sprite1.on('pointerdown', function (pointer) {
+            count1--;
+            this.setTint(0x00ff00);
+          });
+          sprite1.on('pointerout', function (pointer) {
+            this.clearTint();
+          });
+          sprite1.on('pointerup', function (pointer) {
+            this.clearTint();
+          });
+
+
+
+          //end bunny green
+           graphics = this.add.graphics();
+
+          this.input.setDraggable(sprite1);
+
+          this.input.on('drag', function (pointer, gameObject) {
+             if(count1 <= 0)
+             {
+               sprite1.disableInteractive();
+             }
+
+             gameObject.clearTint();
+           });
+
+            sprite2 = this.add.sprite(100, 500, 'icon2');
+            sprite2.setScale(2);
+            sprite2.setInteractive();
+            this.physics.add.existing(sprite2);
+
+
+            //makes bunny unable to be moved
+            sprite2.body.immovable = true;
+            let count2 = 1;
+
+             sprite2.on('pointerdown', function (pointer) {
+               count2--;
+               this.setTint(0x00ff00);
+             });
+             sprite2.on('pointerout', function (pointer) {
+               this.clearTint();
+             });
+             sprite2.on('pointerup', function (pointer) {
+               this.clearTint();
+             });
+
+             //end bunny green
+
+              graphics = this.add.graphics();
+
+              this.input.setDraggable(sprite2);
+
+              this.input.on('drag', function (pointer, gameObject) {
+                if(count2 <= 0)
+                {
+                 sprite2.disableInteractive();
+                }
+
+                  gameObject.clearTint();
+              });
+
+
+
+               sprite4 = this.add.sprite(100, 600, 'icon4');
+               sprite4.setScale(2);
+               sprite4.setInteractive();
+               this.physics.add.existing(sprite4);
+
+               //makes bunny unable to be moved
+               sprite4.body.immovable = true;
+               let count4 = 1;
+
+                sprite4.on('pointerdown', function (pointer) {
+                  count4--;
+                  this.setTint(0x00ff00);
+                });
+                sprite4.on('pointerout', function (pointer) {
+                  this.clearTint();
+                });
+                sprite4.on('pointerup', function (pointer) {
+                  this.clearTint();
+                });
+
+                this.input.setDraggable(sprite4);
+
+                this.input.on('drag', function (pointer, gameObject) {
+                   if(count4 <= 0)
+                   {
+                     sprite4.disableInteractive();
+                   }
+
+                   gameObject.clearTint();
+                 });
+
+
+
+                sprite3 = this.add.sprite(100, 400, 'icon3');
+                sprite3.setScale(2);
+                sprite3.setInteractive();
+                this.physics.add.existing(sprite3);
+                sprite3.setScale(2);
+
+
+                //makes bunny unable to be moved
+                sprite3.body.immovable = true;
+                let count3 = 1;
+
+                 sprite3.on('pointerdown', function (pointer) {
+                   count3--;
+                   this.setTint(0x00ff00);
+                 });
+                 sprite3.on('pointerout', function (pointer) {
+                   this.clearTint();
+                 });
+                 sprite3.on('pointerup', function (pointer) {
+                   this.clearTint();
+                 });
+
+
+
+                 //end bunny green
+
+                  graphics = this.add.graphics();
+
+                   this.input.setDraggable(sprite3);
+
+
+                   this.input.on('drag', function (pointer, gameObject) {
+                     if(count3 <= 0)
+                     {
+                       sprite3.disableInteractive();
+                     }
+
+                     gameObject.clearTint();
+                   });
+
+                   sprite5 = this.add.sprite(100, 700, 'iexplorer');
+                   sprite5.setInteractive();
+                   this.physics.add.existing(sprite5);
+                   sprite5.setScale(.2);
+
+
+                   //makes bunny unable to be moved
+                   sprite5.body.immovable = true;
+                   let count5 = 1;
+
+                    sprite5.on('pointerdown', function (pointer) {
+                      count5--;
+                      this.setTint(0x00ff00);
+                    });
+                    sprite5.on('pointerout', function (pointer) {
+                      this.clearTint();
+                    });
+                    sprite5.on('pointerup', function (pointer) {
+                      this.clearTint();
+                    });
+
+                    //end bunny green
+
+                     graphics = this.add.graphics();
+
+                    this.input.setDraggable(sprite5);
+
+                    this.input.on('drag', function (pointer, gameObject) {
+                       if(count5 <= 0)
+                       {
+                         sprite5.disableInteractive();
+                       }
+
+                       gameObject.clearTint();
+                     });
+
+
+
+
+            /*      this.input.on('drag', function (pointer, gameObject) {
+
+                    gameObject.setTint(0x00ff00);
+                  }); */
+
+         this.anims.create({
+          key: "eyedle",
+          frameRate: 10,
+          frames: this.anims.generateFrameNumbers('partner', { start: 0, end: 2}),
+          repeat: -1
+         });
+
+         sprite.play("eyedle");
+
+       //Create the platforms and the player character set to collide with the platforms
+       createPlatforms(this);
+
+       player = new Player(this, 200, 900, 'player', playerAnimations);
+
+       this.physics.add.collider(player, platforms);
+       this.physics.add.collider(player, sprite);
+       this.physics.add.collider(player, sprite1);
+       this.physics.add.collider(player, sprite2);
+       this.physics.add.collider(player, sprite3);
+       this.physics.add.collider(player, sprite4);
+       this.physics.add.collider(player, sprite5);
+
+       // this block creates the trash sprite, which is our ending goal.
+       // make it unable to move from spawn
+
+<<<<<<< HEAD:Philil.html
+       //Create the energy interactables
+       for (var i = 0; i < totalEnergy; i++)
+       {
+           let myEnergy = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
+           this.physics.add.collider(myEnergy, invisplatforms);
+           this.physics.add.collider(myEnergy, platforms);
+           this.physics.add.collider(myEnergy, basePlatform);
+           energy.push(myEnergy);
+       }
+
+       this.physics.add.overlap(player, energy, eatCarrot, null, this);
+=======
+       let trash = this.physics.add.sprite(1350, 75, 'recycle')//Trash(this,1350, 75);
+       trash.body.immovable = true;
+
+       //Create the energy interactables
+       for (var i = 0; i < totalEnergy; i++)
+       {
+           let myCarrot = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
+           this.physics.add.collider(myCarrot, invisplatforms);
+           this.physics.add.collider(myCarrot, platforms);
+           this.physics.add.collider(myCarrot, basePlatform);
+           energy.push(myCarrot);
+       }
+
+       this.physics.add.overlap(player, energy, eatCarrot, null, this);
+       //registers when the player collides with the trash
+       this.physics.add.overlap(player, trash, gameEnd, null, this);
+>>>>>>> e6146c761fd4da79d4f048bf68158f1e781f1107:index.html
+
+       //Set up user input
+       cursors = this.input.keyboard.createCursorKeys();
+       keys = this.input.keyboard.addKeys('A, D');
+       space = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+       space.on('down', jump); //calls jump function when space is pressed
+       //text for the top left
+       gui = this.add.text(16, 16, '', {fontSize: '16px', fill: '#000'});
+
+       //Create speech bubble
+       this.createSpeechBubble(1060, 800, 290, 100, '“Use WASD to move, SPACE to jump, and click and hold to drag platforms! You cannot stand on a platform that is being held!”');
+
+       something = this.add.sprite(1080, 957, 'somethingsomething');
+       something.setScale(0.6);
+       let npcAnimations = [];
+       var somethingSomething = this.anims.create({key: 'somethingidle', frames: this.anims.generateFrameNames('somethingsomething', {prefix: 'Walk', end: 1, zeroPad: 4}), repeat: -1, frameRate: 2});
+       npcAnimations['somethingSomething'] = somethingSomething
+       something.play('somethingidle'), true;
+
+    }
+
+    /*function createTrash(scene) {
+      escape = scene.physics.addstaticGroup();
+
+      let recyclebin = escape.create()
+    }
+*/
+    function createPlatforms(scene)
+    {
+        platforms = scene.physics.add.staticGroup();
+        invisplatforms = scene.physics.add.staticGroup()
+
+        //basePlatform is the floor of the game
+
+        basePlatform = platforms.create(game.scale.width/2, game.scale.height-30, 'base');
+        basePlatform.setScale(2.2, 2.5).refreshBody(); //scales the base platform in the x axis to cover the entire floor
+
+
+    }
+
+    function createSpeechBubble (x, y, width, height, quote)
+    {
+        var bubbleWidth = width;
+        var bubbleHeight = height;
+        var bubblePadding = 10;
+        var arrowHeight = bubbleHeight / 4;
+
+        var bubble = this.add.graphics({ x: x, y: y });
+
+        //  Bubble shadow
+        bubble.fillStyle(0x222222, 0.5);
+        bubble.fillRoundedRect(6, 6, bubbleWidth, bubbleHeight, 16);
+
+        //  Bubble color
+        bubble.fillStyle(0xffffff, 1);
+
+        //  Bubble outline line style
+        bubble.lineStyle(4, 0x565656, 1);
+
+        //  Bubble shape and outline
+        bubble.strokeRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
+        bubble.fillRoundedRect(0, 0, bubbleWidth, bubbleHeight, 16);
+
+        //  Calculate arrow coordinates
+        var point1X = Math.floor(bubbleWidth / 7);
+        var point1Y = bubbleHeight;
+        var point2X = Math.floor((bubbleWidth / 7) * 2);
+        var point2Y = bubbleHeight;
+        var point3X = Math.floor(bubbleWidth / 7);
+        var point3Y = Math.floor(bubbleHeight + arrowHeight);
+
+        //  Bubble arrow shadow
+        bubble.lineStyle(4, 0x222222, 0.5);
+        bubble.lineBetween(point2X - 1, point2Y + 6, point3X + 2, point3Y);
+
+        //  Bubble arrow fill
+        bubble.fillTriangle(point1X, point1Y, point2X, point2Y, point3X, point3Y);
+        bubble.lineStyle(2, 0x565656, 1);
+        bubble.lineBetween(point2X, point2Y, point3X, point3Y);
+        bubble.lineBetween(point1X, point1Y, point3X, point3Y);
+
+        var content = this.add.text(0, 0, quote, { fontFamily: 'Arial', fontSize: 18, color: '#000000', align: 'center', wordWrap: { width: bubbleWidth - (bubblePadding * 2) } });
+
+        var b = content.getBounds();
+
+        content.setPosition(bubble.x + (bubbleWidth / 2) - (b.width / 2), bubble.y + (bubbleHeight / 2) - (b.height / 2));
+    }
+
+    function update()
+    {
+        /*if(game.input.mousePointer.isDown)
+        {
+          graphics.clear();
+          graphics.lineStyle(5, 0x000000, 1);
+          graphics.lineBetween(player.x, player.y, sprite.x, sprite.y);
+
+        }
+        if(!game.input.mousePointer.isDown)
+        {
+          graphics.clear();
+        }
+<<<<<<< HEAD:Philil.html
+
+
+        if(totalEnergy > 0){
+=======
+        */
+>>>>>>> e6146c761fd4da79d4f048bf68158f1e781f1107:index.html
+        //Player will not move in the x-axis unless a movement key is being pressed
+          player.setVelocityX(0);
+
+          //Player has "drag" on the x-axis meaning they slide a bit after an input
+          player.setDragX(1000);
+
+          //This will reset the number of jumps available to the player whenever the player lands
+          if (player.body.touching.down) {
+              player.currentJumps = 0;
+          }
+
+          //Handle player movements
+          if (cursors.left.isDown || keys.A.isDown)
+          {
+              player.setVelocityX(-600);
+              player.play(player.animations['left'], true);
+              player.flipX = true
+          }
+          else if (cursors.right.isDown || keys.D.isDown)
+          {
+              player.setVelocityX(600);
+              player.play(player.animations['right'], true);
+              player.flipX = false
+          }
+          else
+          {
+              player.play(player.animations['idle'], true);
+          }
+<<<<<<< HEAD:Philil.html
+      }
+=======
+
+          //play platform animations
+          //sprite.play(sprite.animations['spriteIdle'], true);
+
+>>>>>>> e6146c761fd4da79d4f048bf68158f1e781f1107:index.html
+    }
+
+
+
+    function jump(event)
+    {
+        if (player.body.touching.down) {
+          //If the player is on the ground, the player can jump
+          player.setVelocityY(-1000);
+          player.currentJumps++;
+        }
+    }
+    //fooking balls
+    //This function is called when a player overlaps with a carrot
+    function eatCarrot(player, energy)
+    {
+        energy.disableBody(true, true); //remove that particular carrot from the game (physics and visibility)
+        score += 1;
+        gui.setText('Energy Collected: ' + score);
+        guiTimer = this.time.delayedCall(1000, removeText, [], this);
+        totalEnergy--;
+<<<<<<< HEAD:Philil.html
+        if(totalEnergy === 0){
+          gui.setText("Congratulations! You have completed the level!");
+          guiTimer = this.time.delayedCall([], this);
+        }
+=======
+>>>>>>> e6146c761fd4da79d4f048bf68158f1e781f1107:index.html
+    }
+
+    function gameEnd (player, trash) {
+      if(totalEnergy == 0){
+      endGame = true;
+      console.log('endgame');
+      gameFreeze();
+    }
+    }
+    function gameFreeze() {
+        if(endGame === true){
+
+        gui.setText("Congratulations! You have completed this level!");
+        console.log('everyone die lmao');
+        player.disableBody(true, true);
+        sprite.setVisible(false);
+        graphics.setVisible(false);
+      }
+      }
+    //Reset the gui text to be empty after the guiTimer elapses
+    function removeText()
+    {
+        gui.setText('');
+    }
+
+    </script>
+
+</body>
+
+</html>
