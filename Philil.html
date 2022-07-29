@@ -160,6 +160,7 @@
       sprite.setInteractive();
       this.physics.add.existing(sprite);
 
+<<<<<<< HEAD
       //creates the animation for the platform
       this.anims.create({
        key: "eyedle",
@@ -170,6 +171,8 @@
 
       sprite.play("eyedle");
 
+=======
+>>>>>>> bbb8f11 (more icon platforms)
 
 
 
@@ -207,11 +210,156 @@
          });
 
 
-         this.input.on('drag', function (pointer, gameObject) {
+         sprite1 = this.add.sprite(100, 300, 'icon1');
+         sprite1.setScale(2);
+         sprite1.setInteractive();
+         this.physics.add.existing(sprite1);
+         sprite1.setScale(2);
 
-           gameObject.clearTint();
+
+         //makes bunny unable to be moved
+         sprite1.body.immovable = true;
+
+          sprite1.on('pointerdown', function (pointer) {
+            this.setTint(0x00ff00);
+          });
+          sprite1.on('pointerout', function (pointer) {
+            this.clearTint();
+          });
+          sprite1.on('pointerup', function (pointer) {
+            this.clearTint();
+          });
+
+          //end bunny green
+
+           graphics = this.add.graphics();
+
+            this.input.setDraggable(sprite1);
+
+
+
+
+
+            sprite2 = this.add.sprite(100, 500, 'icon2');
+            sprite2.setScale(2);
+            sprite2.setInteractive();
+            this.physics.add.existing(sprite2);
+
+
+            //makes bunny unable to be moved
+            sprite2.body.immovable = true;
+
+             sprite2.on('pointerdown', function (pointer) {
+               this.setTint(0x00ff00);
+             });
+             sprite2.on('pointerout', function (pointer) {
+               this.clearTint();
+             });
+             sprite2.on('pointerup', function (pointer) {
+               this.clearTint();
+             });
+
+             //end bunny green
+
+              graphics = this.add.graphics();
+
+               this.input.setDraggable(sprite2);
+
+
+
+
+
+               sprite4 = this.add.sprite(100, 600, 'icon4');
+               sprite4.setScale(2);
+               sprite4.setInteractive();
+               this.physics.add.existing(sprite4);
+
+               //makes bunny unable to be moved
+               sprite4.body.immovable = true;
+
+                sprite4.on('pointerdown', function (pointer) {
+                  this.setTint(0x00ff00);
+                });
+                sprite4.on('pointerout', function (pointer) {
+                  this.clearTint();
+                });
+                sprite4.on('pointerup', function (pointer) {
+                  this.clearTint();
+                });
+
+                //end bunny green
+
+                 graphics = this.add.graphics();
+
+                this.input.setDraggable(sprite4);
+
+                sprite3 = this.add.sprite(100, 400, 'icon3');
+                sprite3.setScale(2);
+                sprite3.setInteractive();
+                this.physics.add.existing(sprite3);
+                sprite3.setScale(2);
+
+
+                //makes bunny unable to be moved
+                sprite3.body.immovable = true;
+
+                 sprite3.on('pointerdown', function (pointer) {
+                   this.setTint(0x00ff00);
+                 });
+                 sprite3.on('pointerout', function (pointer) {
+                   this.clearTint();
+                 });
+                 sprite3.on('pointerup', function (pointer) {
+                   this.clearTint();
+                 });
+
+                 //end bunny green
+
+                  graphics = this.add.graphics();
+
+                   this.input.setDraggable(sprite3);
+
+                   sprite5 = this.add.sprite(100, 700, 'iexplorer');
+                   sprite5.setInteractive();
+                   this.physics.add.existing(sprite5);
+                   sprite5.setScale(.2);
+
+
+                   //makes bunny unable to be moved
+                   sprite5.body.immovable = true;
+
+                    sprite5.on('pointerdown', function (pointer) {
+                      this.setTint(0x00ff00);
+                    });
+                    sprite5.on('pointerout', function (pointer) {
+                      this.clearTint();
+                    });
+                    sprite5.on('pointerup', function (pointer) {
+                      this.clearTint();
+                    });
+
+                    //end bunny green
+
+                     graphics = this.add.graphics();
+
+                      this.input.setDraggable(sprite5);
+
+
+
+
+                  this.input.on('drag', function (pointer, gameObject) {
+
+                    gameObject.setTint(0x00ff00);
+                  });
+
+         this.anims.create({
+          key: "eyedle",
+          frameRate: 10,
+          frames: this.anims.generateFrameNumbers('partner', { start: 0, end: 2}),
+          repeat: -1
          });
 
+         sprite.play("eyedle");
 
        //Create the platforms and the player character set to collide with the platforms
        createPlatforms(this);
@@ -224,6 +372,11 @@
 >>>>>>> 9e32e19bae68075880fb55a112bfa740230a9b82
        this.physics.add.collider(player, platforms);
        this.physics.add.collider(player, sprite);
+       this.physics.add.collider(player, sprite1);
+       this.physics.add.collider(player, sprite2);
+       this.physics.add.collider(player, sprite3);
+       this.physics.add.collider(player, sprite4);
+       this.physics.add.collider(player, sprite5);
 
        // this block creates the trash sprite, which is our ending goal.
        // make it unable to move from spawn
@@ -287,11 +440,14 @@
         basePlatform = platforms.create(game.scale.width/2, game.scale.height-30, 'base');
         basePlatform.setScale(2.2, 2.5).refreshBody(); //scales the base platform in the x axis to cover the entire floor
 
+<<<<<<< HEAD
         platforms.create(250, 700, 'platform'); //creates the upper left platform
         platforms.create(950, 500, 'platform'); //creates the bottome right platform
         platforms.create(300, 200, 'platform'); //third platform baybee
         platforms.create(1000, 150, 'platform'); //anotha won
     }
+=======
+>>>>>>> bbb8f11 (more icon platforms)
 
     function createSpeechBubble (x, y, width, height, quote)
     {
