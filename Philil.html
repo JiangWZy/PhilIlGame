@@ -68,8 +68,8 @@
     var basePlatform;
 
     var player;
-    var carrots = [];
-    var totalCarrots = 24;
+    var energy = [];
+    var totalEnergy = 12;
     var score = 0;
 
     var graphics;
@@ -92,6 +92,7 @@
     var sprite4;
     var sprite5;
     var base;
+    var something
 
 
 
@@ -106,7 +107,7 @@
       this.load.image('lassoHead', 'assets/lasso/lassoHead.png');
       this.load.image('lassoString', 'assets/lasso/lassoString.png');
       this.load.atlas('player', 'assets/philil/Philil.png','assets/philil/Philil.json');
-      this.load.atlas('somethingsomething', 'assets/somethingsomething/SomethingSomething.png','assets/somethingsomething/SomethingSomething.json');
+      this.load.atlas('somethingsomething', 'assets/somethingsomething/SomethingSomething.png', 'assets/somethingsomething/SomethingSomething.json');
       this.load.image('carrot', 'assets/mutations/Energy.png');
       this.load.spritesheet('partner', 'assets/platform/Glitched_Platform.png', { frameWidth: 50, frameHeight: 21 });
       this.load.image('base', 'assets/start.png');
@@ -135,7 +136,6 @@
       sprite.setScale(2);
       sprite.setInteractive();
       this.physics.add.existing(sprite);
-
       //creates the animation for the platform
       this.anims.create({
        key: "eyedle",
@@ -143,13 +143,7 @@
        frames: this.anims.generateFrameNumbers('partner', { start: 0, end: 2}),
        repeat: -1
       });
-
       sprite.play("eyedle");
-
-
-
-
-
 
       //makes bunny unable to be moved
       sprite.body.immovable = true;
@@ -184,22 +178,23 @@
 
        //Create the platforms and the player character set to collide with the platforms
        createPlatforms(this);
+
        player = new Player(this, 200, 900, 'player', playerAnimations);
        this.physics.add.collider(player, platforms);
        this.physics.add.collider(player, sprite);
 
 
-       //Create the carrot interactables
-       for (var i = 0; i < totalCarrots; i++)
+       //Create the energy interactables
+       for (var i = 0; i < totalEnergy; i++)
        {
-           let myCarrot = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
-           this.physics.add.collider(myCarrot, invisplatforms);
-           this.physics.add.collider(myCarrot, platforms);
-           this.physics.add.collider(myCarrot, basePlatform);
-           carrots.push(myCarrot);
+           let myEnergy = new Carrot(this, Phaser.Math.Between(0, game.scale.width), Phaser.Math.Between(0, game.scale.height-80));
+           this.physics.add.collider(myEnergy, invisplatforms);
+           this.physics.add.collider(myEnergy, platforms);
+           this.physics.add.collider(myEnergy, basePlatform);
+           energy.push(myEnergy);
        }
 
-       this.physics.add.overlap(player, carrots, eatCarrot, null, this);
+       this.physics.add.overlap(player, energy, eatCarrot, null, this);
 
        //Set up user input
        cursors = this.input.keyboard.createCursorKeys();
@@ -210,8 +205,14 @@
        gui = this.add.text(16, 16, '', {fontSize: '32px', fill: '#000'});
 
        //Create speech bubble
-       this.createSpeechBubble(1050, 800, 290, 100, '“Use WASD to move, SPACE to jump, and click and hold to drag platforms! You cannot stand on a platform that is being held!”');
+       this.createSpeechBubble(1060, 800, 290, 100, '“Use WASD to move, SPACE to jump, and click and hold to drag platforms! You cannot stand on a platform that is being held!”');
 
+       something = this.add.sprite(1080, 957, 'somethingsomething');
+       something.setScale(0.6);
+       let npcAnimations = [];
+       var somethingSomething = this.anims.create({key: 'somethingidle', frames: this.anims.generateFrameNames('somethingsomething', {prefix: 'Walk', end: 1, zeroPad: 4}), repeat: -1, frameRate: 2});
+       npcAnimations['somethingSomething'] = somethingSomething
+       something.play('somethingidle'), true;
 
     }
 
@@ -294,7 +295,7 @@
         }
 
 
-        if(totalCarrots > 0){
+        if(totalEnergy > 0){
         //Player will not move in the x-axis unless a movement key is being pressed
           player.setVelocityX(0);
 
@@ -323,9 +324,6 @@
           {
               player.play(player.animations['idle'], true);
           }
-
-          //play platform animations
-          //sprite.play(sprite.animations['spriteIdle'], true);
       }
     }
 
@@ -345,8 +343,8 @@
         score += 1;
         gui.setText('Energy Collected: ' + score);
         guiTimer = this.time.delayedCall(1000, removeText, [], this);
-        totalCarrots--;
-        if(totalCarrots === 0){
+        totalEnergy--;
+        if(totalEnergy === 0){
           gui.setText("Congratulations! You have completed the level!");
           guiTimer = this.time.delayedCall([], this);
         }
